@@ -7,12 +7,13 @@ const chalk = require('chalk');
 // ———————————————[Variables]———————————————
 const client = new Client({ intents: 32767 });
 module.exports = client;
-// create new collection and load commands and events
+// Create a new collection and load the commands, events and database (MySQL)
 client.commands = new Collection();
 client.aliases = new Collection();
 client.cooldowns = new Collection();
 require('./handlers/commands')(client);
 require('./handlers/events')(client);
+require('./handlers/dbConnection');
 //
 const token = process.env.clientToken;
 //
