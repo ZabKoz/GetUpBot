@@ -8,8 +8,7 @@ const globPromise = promisify(glob);
 module.exports = async (client) => {
     const eventsFiles = await globPromise(`${process.cwd()}/events/**/*.js`);
     eventsFiles.map((value) => require(value))
-    console.log(eventsFiles)
-}
+};
 /**
  * 
  * @INFO
