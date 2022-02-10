@@ -1,9 +1,12 @@
+// ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
 const client = require('../../bot');
 const { dbConnect } = require('../../handlers/dbConnection');
 const { embedError, embedInfo, } = require('../../config/color.json');
 const { circleno, info, } = require('../../config/emoji.json');
+const messageFunction = require('../../handlers/messageFunction');
 
+// ———————————————[Variables]———————————————
 let conn;
 conn = dbConnect();
 
@@ -20,10 +23,22 @@ client.on('messageCreate', async (message) => {
         }
         // If the query result is greater than 0
         if (res1.length > 0) {
-
+            conn.query("SELECT * FROM guildSettings WHERE guildId = ?", [message.guild.id], async (err2, res2) => {
                 // Saves the value of the prefix variable as the prefix from the query
                 const prefix = res1[0].guildPrefix;
                 
+                // If there is an error display it
+                if (err2) {
+                    console.log(`Error #2 MessageCreate`);
+                    console.log(err2);
+                    return;
+                };
+
+                if (res2.length > 0) {
+                    messageFunction.handleMessages(message, conn, res2)
+                };
+
+                // If the message does not start with a prefix, skip the next steps
                 if (!message.content.toLowerCase().startsWith(prefix)) return;
                 if (!message.member)
                 message.member = await message.guild.fetchMember(message)
@@ -133,6 +148,14 @@ client.on('messageCreate', async (message) => {
                  }, command.cooldowns);
 
                 await command.run(client, message, args);
+            });
         };
     });
 });
+/** 
+* @INFO
+* Bot Coded by ZabKoz#2744
+* @INFO
+* Please mention me when you use this code!
+*
+*/
