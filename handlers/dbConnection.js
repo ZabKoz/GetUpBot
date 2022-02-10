@@ -39,7 +39,7 @@ conn.getConnection(function (err) {
             chalk.gray('—————————————————') +
             chalk.white('[') + chalk.red('Błąd Database') + chalk.white(']') + 
             chalk.gray('—————————————————')
-        )
+        );
 
         // Display error in terminal
         console.log(err);
@@ -53,12 +53,12 @@ conn.getConnection(function (err) {
     );
     
     // Information about bot connection to the database and display of which database
-    console.log(chalk.gray('Połączono do bazy: '), chalk.red.underline.bold(process.env.dbDatabase))
+    console.log(chalk.gray('Połączono do bazy: '), chalk.red.underline.bold(process.env.dbDatabase));
 });
 
 module.exports = {
     dbConnect: () => {
-        return conn
+        return conn;
     }
 }
 
