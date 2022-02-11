@@ -6,6 +6,7 @@ module.exports = {
    botpermissions: ["ADMINISTRATOR"],
    usage: "Jak szybki jest Bot?",
    cooldowns: 2000,
+   premiumOnly: true,
    developersOnly: false,
    toggleOff: false,
    run: async (client, message, args) => {

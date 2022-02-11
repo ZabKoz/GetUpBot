@@ -24,6 +24,7 @@ client.on('messageCreate', async (message) => {
         // If the query result is greater than 0
         if (res1.length > 0) {
             conn.query("SELECT * FROM guildSettings WHERE guildId = ?", [message.guild.id], async (err2, res2) => {
+                conn.query("SELECT * FROM guildPremium WHERE guildId = ?", [message.guild.id], async (err3, res3) => {
                 // Saves the value of the prefix variable as the prefix from the query
                 const prefix = res1[0].guildPrefix;
                 
@@ -80,11 +81,12 @@ client.on('messageCreate', async (message) => {
 
                     // Send information if the command has been deactivated
                     let toggleoff_embed = new MessageEmbed()
-                    .setTitle(`${circleno}| Ups!`)
-                    .setDescription(`Ta komenda została wyłączona przez developerów.`)
-                    .setColor(embedError)
-                    .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                    .setThumbnail()
+                        .setTitle(`${circleno}| Ups!`)
+                        .setDescription(`Ta komenda została wyłączona przez developerów.`)
+                        .setColor(embedError)
+                        .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
+                        .setThumbnail()
+                        
                     if (!command) return message.channel.send({ embeds: [toggleoff_embed] })
                     .then(msg => {
                         setTimeout(() => msg.delete(), 10000);
@@ -93,10 +95,11 @@ client.on('messageCreate', async (message) => {
 
                     // Send information that the bot does not have permissions to execute this
                     let botperms_embed = new MessageEmbed()
-                    .setTitle(`${circleno}| Nie mam uprawnień do używania tego polecenia!`)
-                    .setColor(embedError)
-                    .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                    .setThumbnail()
+                        .setTitle(`${circleno}| Nie mam uprawnień do używania tego polecenia!`)
+                        .setColor(embedError)
+                        .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
+                        .setThumbnail()
+
                     if (!command) return message.channel.send({ embeds: [botperms_embed] })
                     .then(msg => {
                         setTimeout(() => msg.delete(), 10000);
@@ -106,10 +109,11 @@ client.on('messageCreate', async (message) => {
 
                         // Send information that programmers can use this command
                         let developersOnly_embed = new MessageEmbed()
-                        .setTitle(`${circleno}| Tylko programiści mogą używać tego polecenia!`)
-                        .setColor(embedError)
-                        .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                        .setThumbnail()
+                            .setTitle(`${circleno}| Tylko programiści mogą używać tego polecenia!`)
+                            .setColor(embedError)
+                            .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
+                            .setThumbnail()
+
                         if (!command) return message.channel.send({ embeds: [developersOnly_embed] })
                         .then(msg => {
                             setTimeout(() => msg.delete(), 10000);
@@ -120,34 +124,52 @@ client.on('messageCreate', async (message) => {
 
                         // Send information that you must wait before using this command
                         let cooldown_embed = new MessageEmbed()
-                        .setTitle(`${circleno}| Musisz poczekać aby użyć tej komendy!`)
-                        .setDescription(
-                            `${
-                                randomMessages_Cooldown[
-                                Math.floor(Math.random() * randomMessages_Cooldown.length)
-                                ]
-                             }`
-                        )
-                        .setColor(embedError)
-                        .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                        .setThumbnail()
+                            .setTitle(`${circleno}| Musisz poczekać aby użyć tej komendy!`)
+                            .setDescription(
+                                `${
+                                    randomMessages_Cooldown[
+                                    Math.floor(Math.random() * randomMessages_Cooldown.length)
+                                    ]
+                                }`
+                            )
+                            .setColor(embedError)
+                            .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
+                            .setThumbnail()
+
                         if (!command) return message.channel.send({ embeds: [cooldown_embed] })
                         .then(msg => {
                             setTimeout(() => msg.delete(), 10000);
                         });
                     };
+                }
+                if (command.premiumOnly) {
+                    // 
+                    if (res3[0].premium === 'false') {
+                        // 
+                        let premiumOnly_embed = new MessageEmbed()
+                            .setTitle(`${circleno}| Tylko servery premium mogą używać tego polecenia!`)
+                            .setColor(embedError)
+                            .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
+                        
+                        if (command) return message.channel.send({ embeds: [premiumOnly_embed] })
+                        .then(msg => {
+                             setTimeout(() => msg.delete(), 10000);
+                        });
+                        return;
+                    }
                 };
 
-                client.cooldowns.set(
-                    `${command.name}${message.author.id}`,
-                    Date.now() + command.cooldowns
-                );
+                    client.cooldowns.set(
+                        `${command.name}${message.author.id}`,
+                        Date.now() + command.cooldowns
+                    );
 
-                setTimeout(() => {
-                    client.cooldowns.delete(`${command.name}${message.author.id}`);
-                 }, command.cooldowns);
-
-                await command.run(client, message, args);
+                    setTimeout(() => {
+                        client.cooldowns.delete(`${command.name}${message.author.id}`);
+                    }, command.cooldowns);
+        
+                        await command.run(client, message, args);
+                });
             });
         };
     });

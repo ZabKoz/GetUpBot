@@ -13,7 +13,7 @@ module.exports = {
             // If the result is 0
             if (res.length == 0) {
                 // Add a new record to the database
-                conn.query("INSERT INTO guildPrefix (guildId, guildPrefix) VALUES (?, ?)", [guildId, process.env.clientPrefix] );
+                conn.query("INSERT INTO guildPrefix (guildId, guildPrefix) VALUES (?, ?)", [guildId, process.env.clientPrefix]);
                 // Display in the terminal information about the addition of
                 console.log(chalk.gray('Dodano: ') + chalk.red.underline.bold(`${guildId} `) + chalk.gray('do tabeli prefix'));
             };
@@ -23,9 +23,19 @@ module.exports = {
             // If the result is 0
             if (res1.length == 0) {
                 // Add a new record to the database
-                conn.query("INSERT INTO guildSettings (guildId) VALUES (?)", [guildId] );
+                conn.query("INSERT INTO guildSettings (guildId) VALUES (?)", [guildId]);
                 // Display in the terminal information about the addition of
                 console.log(chalk.gray('Dodano: ') + chalk.red.underline.bold(`${guildId} `) + chalk.gray('do tabeli ustawień'));
+            };
+        });
+        // Checking if a server exists in the guildPremium table
+        conn.query("SELECT * FROM guildPremium WHERE guildId = ?", [guildId], (err, res2) => {
+            // If the result is 0
+            if (res2.length == 0) {
+                // Add a new record to the database
+                conn.query("INSERT INTO guildPremium (guildId, premium) VALUES (?, ?)", [guildId, 'true']);
+                // Display in the terminal information about the addition of
+                console.log(chalk.gray('Dodano: ') + chalk.red.underline.bold(`${guildId} `) + chalk.gray('do tabeli premium'));
             };
         });
     },
