@@ -33,7 +33,7 @@ module.exports = {
             // If the result is 0
             if (res2.length == 0) {
                 // Add a new record to the database
-                conn.query("INSERT INTO guildPremium (guildId, premium) VALUES (?, ?)", [guildId, 'true']);
+                conn.query("INSERT INTO guildPremium (guildId, premium) VALUES (?, ?)", [guildId, 'false']);
                 // Display in the terminal information about the addition of
                 console.log(chalk.gray('Dodano: ') + chalk.red.underline.bold(`${guildId} `) + chalk.gray('do tabeli premium'));
             };
