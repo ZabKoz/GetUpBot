@@ -10,5 +10,6 @@ module.exports = {
    developersOnly: false,
    toggleOff: false,
    run: async (client, message, args) => {
+      //code
    },
 };
