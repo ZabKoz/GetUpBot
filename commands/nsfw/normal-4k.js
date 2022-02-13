@@ -22,7 +22,7 @@ module.exports = {
                 .setColor(embedError)
                 .setTitle(`${circleno} | Ta komenda jest dozwolona tylko na kanałach \`NSFW\``)
                 .setImage('https://media2.giphy.com/media/ToMjGpx9F5ktZw8qPUQ/giphy-downsized-large.gif')
-                .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
+                .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
             message.channel.send({ embeds: [noNsfw_embed] })
             .then(msg => {
                 setTimeout(() => msg.delete(), 10000)
@@ -37,6 +37,7 @@ module.exports = {
                         .setColor(embedNsfw)
                         .setTitle(`${NSFW1}| 4K`)
                         .setImage(response.body.message)
+                        .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
                     message.channel.send({ embeds: [Nsfw_embed] }).then(embedMessage => {
                         embedMessage.react(boobs1)
                         .then(() => embedMessage.react(boobs2))
@@ -55,3 +56,11 @@ module.exports = {
         };
     },
  };
+ /**
+ * 
+ * @INFO
+ * Bot Coded by ZabKoz#2744
+ * @INFO
+ * Please mention me when you use this code!
+ *
+ */
