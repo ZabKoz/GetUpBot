@@ -1,21 +1,24 @@
 const { MessageEmbed } = require('discord.js')
+const { embedOk } = require('../../config/color.json')
+
 module.exports = {
    name: "ping",
-   aliases: ["p", "pong"],
+   //aliases: ["..."],
    description: "Zwraca Ping",
    botpermissions: ["ADMINISTRATOR"],
-   usage: "Jak szybki jest Bot?",
+   usage: " ",
    cooldowns: 2000,
    premiumOnly: true,
    developersOnly: false,
    toggleOff: false,
    run: async (client, message, args) => {
-      const Embed = new MessageEmbed()
-         .setColor('GREEN')
-         .setTitle('Jak szybki jest Bot?')
-         .setDescription(`\`${client.ws.ping}ms\` to moje opuźnienie`)
+      message.delete()
+      let ping_embed = new MessageEmbed()
+         .setColor(embedOk)
+         .setTitle('Pingowanie...')
+         .setDescription(`🏓\`${client.ws.ping}ms\``)
          .setTimestamp()
-         //.setFooter(`${clientname}`, `${clientavatar}`);
-      message.channel.send({ embeds: [Embed] });
+         .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
+      message.channel.send({ embeds: [ping_embed] });
    },
 };
