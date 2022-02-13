@@ -8,7 +8,7 @@ module.exports = {
    botpermissions: ["ADMINISTRATOR"],
    usage: " ",
    cooldowns: 2000,
-   premiumOnly: true,
+   premiumOnly: false,
    developersOnly: false,
    toggleOff: false,
    run: async (client, message, args) => {
