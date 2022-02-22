@@ -1,6 +1,7 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
 const client = require('../../bot');
+const ms = require('ms');
 const { dbConnect } = require('../../handlers/dbConnection');
 const { embedError, embedInfo, } = require('../../config/color.json');
 const { circleno, info, } = require('../../config/emoji.json');
@@ -62,7 +63,9 @@ client.on('messageCreate', async (message) => {
                 };
                 
                 //Loading commands and aliases
-                const command = client.commands.get(cmd.toLowerCase()) || client.commands.find((c) => c.aliases?.includes(cmd.toLowerCase()));
+                const command =
+                    client.commands.get(cmd.toLowerCase()) ||
+                    client.commands.find((c) => c.aliases?.includes(cmd.toLowerCase()));
                 
                 // Send information if the user did not enter a command
                 let nocmd_embed = new MessageEmbed()
@@ -78,7 +81,7 @@ client.on('messageCreate', async (message) => {
 
                 
                 if (command.toggleOff) {
-
+                    message.delete();
                     // Send information if the command has been deactivated
                     let toggleoff_embed = new MessageEmbed()
                         .setTitle(`${circleno}| Ups!`)
@@ -86,13 +89,16 @@ client.on('messageCreate', async (message) => {
                         .setColor(embedError)
                         .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
                         .setThumbnail()
-                        
-                    if (!command) return message.channel.send({ embeds: [toggleoff_embed] })
-                    .then(msg => {
+
+                    message.channel.send({ embeds: [toggleoff_embed] }).then(msg => {
                         setTimeout(() => msg.delete(), 10000);
                     });
-                } else if (!message.guild.me.permissions.has(command.botpermissions || [])) {
 
+                    return;
+
+                }
+                if (!message.guild.me.permissions.has(command.botpermissions || [])) {
+                    message.delete();
                     // Send information that the bot does not have permissions to execute this
                     let botperms_embed = new MessageEmbed()
                         .setTitle(`${circleno}| Nie mam uprawnień do używania tego polecenia!`)
@@ -100,11 +106,15 @@ client.on('messageCreate', async (message) => {
                         .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
                         .setThumbnail()
 
-                    if (!command) return message.channel.send({ embeds: [botperms_embed] })
+                    return message.channel.send({ embeds: [botperms_embed] })
                     .then(msg => {
                         setTimeout(() => msg.delete(), 10000);
                     });
-                } else if (command.developersOnly) {
+                }
+
+                if (command.developersOnly) {
+                    message.delete();
+                    // Checking if the user is among the developers
                     if (!process.env.developerID.includes(message.author.id)) {
 
                         // Send information that programmers can use this command
@@ -114,38 +124,44 @@ client.on('messageCreate', async (message) => {
                             .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
                             .setThumbnail()
 
-                        if (!command) return message.channel.send({ embeds: [developersOnly_embed] })
-                        .then(msg => {
-                            setTimeout(() => msg.delete(), 10000);
-                        });
+                            return message.channel.send({ embeds: [developersOnly_embed] })
+                            .then(msg => {
+                                setTimeout(() => msg.delete(), 10000);
+                            });
                     };
-                } else if (command.cooldowns) {
+                }
+
+                if (command.cooldowns) {
+                    message.delete();
+                    // Check if the user has cooldown
                     if (client.cooldowns.has(`${command.name}${message.author.id}`)) {
 
                         // Send information that you must wait before using this command
                         let cooldown_embed = new MessageEmbed()
-                            .setTitle(`${circleno}| Musisz poczekać aby użyć tej komendy!`)
+                            .setTitle(
+                                `${circleno}| Wolniej... Gdzie ci tak śpieszno?`)
                             .setDescription(
-                                `${
-                                    randomMessages_Cooldown[
-                                    Math.floor(Math.random() * randomMessages_Cooldown.length)
-                                    ]
-                                }`
+                                `Musisz odczekać \`${ms(
+                                    client.cooldowns.get(`${command.name}${message.author.id}`) -
+                                       Date.now(),
+                                    { long: true }
+                                 )}\` Aby użyć komendy \`${command.name}\` ponownie!`
                             )
                             .setColor(embedError)
                             .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
                             .setThumbnail()
 
-                        if (!command) return message.channel.send({ embeds: [cooldown_embed] })
+                        return message.channel.send({ embeds: [cooldown_embed] })
                         .then(msg => {
                             setTimeout(() => msg.delete(), 10000);
                         });
                     };
                 }
                 if (command.premiumOnly) {
-                    // 
+                    message.delete();
+                    // Checking if the server is premium
                     if (res3[0].premium === 'false') {
-                        // 
+                        // If the server has the setting "premium = false" display the information
                         let premiumOnly_embed = new MessageEmbed()
                             .setTitle(`${circleno}| Tylko servery premium mogą używać tego polecenia!`)
                             .setColor(embedError)
