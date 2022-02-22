@@ -13,10 +13,21 @@ client.on('ready', async () => {
      * 
     */
     // Set bot activity
-    client.user.setActivity(
+    const activities = [
         `Servery: ${client.guilds.cache.size}`,
-        { type: 'LISTENING' }
-    );
+        `Servery: ${client.guilds.cache.size}`,
+        `${client.commands.size} Komendy`,
+        `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} Użytkowników`,
+        `${process.env.clientPrefix}help`
+    ];
+
+    setInterval(() => {
+    // generate random number between 1 and list length.
+    const randomIndex = Math.floor(Math.random() * (activities.length - 1) + 1);
+    const newActivity = activities[randomIndex];
+
+    client.user.setActivity(newActivity, {type: 'WATCHING'});
+    }, 10000);
     // Information bot
     console.log(
         chalk.gray('—————————————————') +
@@ -49,7 +60,7 @@ client.on('ready', async () => {
 /**
  * 
  * @INFO
- * Website Coded by ZabKoz#2744
+ * Bot Coded by ZabKoz#2744
  * @INFO
  * Please mention me when you use this code!
  *
