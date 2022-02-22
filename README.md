@@ -27,7 +27,7 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 | Fun	|	`meme`	|
 | Info	|	`about`, `help`, `ping`, `uptime`	|
 | Nsfw	|	`FunnyNsfw`, `Hanal`, `Hass`, `BigBoobs`, `HotMom` and **74** more!	|
-* Full list of commands: [**HERE**](https://github.com/ZabKoz/GetUpBot/blob/master/docs/COMMANDS.md).
+* Full list of commands: [**HERE**](https://github.com/ZabKoz/GetUpBot/blob/master/COMMANDS.md).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
