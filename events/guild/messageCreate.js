@@ -81,7 +81,6 @@ client.on('messageCreate', async (message) => {
 
                 
                 if (command.toggleOff) {
-                    message.delete();
                     // Send information if the command has been deactivated
                     let toggleoff_embed = new MessageEmbed()
                         .setTitle(`${circleno}| Ups!`)
@@ -93,12 +92,10 @@ client.on('messageCreate', async (message) => {
                     message.channel.send({ embeds: [toggleoff_embed] }).then(msg => {
                         setTimeout(() => msg.delete(), 10000);
                     });
-
                     return;
-
                 }
+
                 if (!message.guild.me.permissions.has(command.botpermissions || [])) {
-                    message.delete();
                     // Send information that the bot does not have permissions to execute this
                     let botperms_embed = new MessageEmbed()
                         .setTitle(`${circleno}| Nie mam uprawnień do używania tego polecenia!`)
@@ -106,14 +103,14 @@ client.on('messageCreate', async (message) => {
                         .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
                         .setThumbnail()
 
-                    return message.channel.send({ embeds: [botperms_embed] })
+                    message.channel.send({ embeds: [botperms_embed] })
                     .then(msg => {
                         setTimeout(() => msg.delete(), 10000);
                     });
+                    return;
                 }
 
                 if (command.developersOnly) {
-                    message.delete();
                     // Checking if the user is among the developers
                     if (!process.env.developerID.includes(message.author.id)) {
 
@@ -124,15 +121,15 @@ client.on('messageCreate', async (message) => {
                             .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
                             .setThumbnail()
 
-                            return message.channel.send({ embeds: [developersOnly_embed] })
-                            .then(msg => {
-                                setTimeout(() => msg.delete(), 10000);
-                            });
+                        message.channel.send({ embeds: [developersOnly_embed] })
+                        .then(msg => {
+                            setTimeout(() => msg.delete(), 10000);
+                        });
+                        return;
                     };
                 }
 
                 if (command.cooldowns) {
-                    message.delete();
                     // Check if the user has cooldown
                     if (client.cooldowns.has(`${command.name}${message.author.id}`)) {
 
@@ -151,14 +148,14 @@ client.on('messageCreate', async (message) => {
                             .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
                             .setThumbnail()
 
-                        return message.channel.send({ embeds: [cooldown_embed] })
+                        message.channel.send({ embeds: [cooldown_embed] })
                         .then(msg => {
                             setTimeout(() => msg.delete(), 10000);
                         });
+                        return;
                     };
                 }
                 if (command.premiumOnly) {
-                    message.delete();
                     // Checking if the server is premium
                     if (res3[0].premium === 'false') {
                         // If the server has the setting "premium = false" display the information
