@@ -1,12 +1,13 @@
 // ———————————————[Packages]———————————————
 const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
+const Discord = require('discord.js')
 const { embedError, embedNsfw } = require('../../config/color.json');
 const { circleno, NSFW1, hentai, hentai1, hentai2, hentai3, NoGodNo} = require('../../config/emoji.json');
 
 module.exports = {
-    name: "hlol",
-    //aliases: ["..."],
+    name: "HLOL",
+    aliases: ["HLol", "hlol"],
     description: "Hentai 18+",
     botpermissions: ["ADMINISTRATOR"],
     usage: "",
@@ -29,33 +30,99 @@ module.exports = {
             });
         } else {
             try {
-                var Responses = [
-                    "Rule34LoL",
-                    "LeagueOfLegendsNSFW",
-                    "League_Of_Feet",
-                    "KdaNSFW",
-                ];
-                const Response = Math.floor(Math.random() * Responses.length);
-                const { body } = await request
-                    .get(`https://www.reddit.com/r/${Responses[Response]}.json?sort=top&t=week`)
-                    .query({
-                        limit: 800
-                    });
-                const allowed = body.data.children;
-                const randomnumber = Math.floor(Math.random() * allowed.length);
-                let Nsfw_embed = new MessageEmbed()
-                    .setColor(embedNsfw)
-                    .setTitle(`${NSFW1}| Language of legends || ${Responses[Response]}`)
-                    .setDescription(`Tytuł: ${allowed[randomnumber].data.title}\nWysłał: ${allowed[randomnumber].data.author}`)
-                    .setImage(allowed[randomnumber].data.url)
-                    .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
-                message.channel.send({ embeds: [Nsfw_embed] }).then(embedMessage => {
-                    embedMessage.react(hentai)
-                    .then(() => embedMessage.react(hentai1))
-                    .then(() => embedMessage.react(hentai2))
-                    .then(() => embedMessage.react(hentai3))
-                    .then(() => embedMessage.react(NoGodNo))
-                })
+                async function getImage() {
+                    // Subreddits
+                    var Responses = [
+                        "Rule34LoL",
+                        "LeagueOfLegendsNSFW",
+                        "League_Of_Feet",
+                        "KdaNSFW",
+                    ];
+                    // Get random subreddits
+                    const Response = Math.floor(Math.random() * Responses.length);
+                    // Website search
+                    const { body } = await request
+                        .get(`https://www.reddit.com/r/${Responses[Response]}.json?sort=top&t=week`)
+                        .query({
+                            limit: 800
+                        });
+                    // Collecting nsfw
+                    const allowed = body.data.children;
+                    // Get random post
+                    const randomnumber = Math.floor(Math.random() * allowed.length);
+                    // Post information
+                    let title = allowed[randomnumber].data.title;
+                    let author = allowed[randomnumber].data.author;
+                    let score = allowed[randomnumber].data.ups;
+                    let comments = allowed[randomnumber].data.num_comments;
+                    let link = allowed[randomnumber].data.url;
+                    // If the link contains the words redgifs and gifv
+                    if (link.includes('redgifs')
+                        || link.includes('gifv')
+                        || link.includes('gfycat')
+                        || link.includes('mp4')
+                        || link.includes('comments')
+                        || link.includes('gallery')) {
+                            let Nsfw_embed = {
+                                title: `${NSFW1}| Hentai Language of legends || ${Responses[Response]}`,
+                                fields: [
+                                    {
+                                        name: 'Tytuł:',
+                                        value: title,
+                                    },
+                                    {
+                                        name: 'Autor:',
+                                        value: author,
+                                        inline: false,
+                                    },
+                                    {
+                                        name: 'Głosy:',
+                                        value: `👍| ${score}`,
+                                        inline: true,
+                                    },
+                                    {
+                                        name: 'Komentarze:',
+                                        value: `💬| ${comments}`,
+                                        inline: true,
+                                    },
+                                ],
+                                footer: {
+                                    text: `${process.env.clientName} -> ${message.author.tag}`,
+                                    icon_url: `${process.env.clientAvatar}`,
+                                },
+                                color: embedNsfw,
+                            }
+                            message.channel.send({ embeds: [Nsfw_embed] })
+                            message.channel.send(link).then(embedMessage => {
+                                embedMessage.react(hentai)
+                                .then(() => embedMessage.react(hentai1))
+                                .then(() => embedMessage.react(hentai2))
+                                .then(() => embedMessage.react(hentai3))
+                                .then(() => embedMessage.react(NoGodNo))
+                            })
+                            return;
+                    }
+                    // Create embed
+                    let Nsfw_embed = new MessageEmbed()
+                        .setColor(embedNsfw)
+                        .setURL(link)
+                        .setTitle(`${NSFW1}| Hentai Language of legends || ${Responses[Response]}`)
+                        .addField("Tytuł:", title)
+                        .addField("Autor:", author, false)
+                        .addField("Głosy:", `👍| ${score}`, true)
+                        .addField("Komentarze:", `💬| ${comments}`, true)
+                        .setImage(allowed[randomnumber].data.url)
+                        .setTimestamp()
+                        .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
+                        message.channel.send({ embeds: [Nsfw_embed] }).then(embedMessage => {
+                        embedMessage.react(hentai)
+                        .then(() => embedMessage.react(hentai1))
+                        .then(() => embedMessage.react(hentai2))
+                        .then(() => embedMessage.react(hentai3))
+                        .then(() => embedMessage.react(NoGodNo))
+                    })
+                }
+                getImage();
             } catch (err) {
                 let NoNsfw_embed = new MessageEmbed()
                     .setColor(embedError)
@@ -66,7 +133,7 @@ module.exports = {
         };
     },
  };
- /**
+/**
  * 
  * @INFO
  * Bot Coded by ZabKoz#2744
