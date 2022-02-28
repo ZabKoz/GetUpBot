@@ -14,6 +14,17 @@
 | ping	|	Ping bot.	|	`ping`	|
 | uptime	|	Bot runtime.	|	`uptime`	|
 
+## 🎶| Music
+|	Command	| Description	| Usage
+|---------------|--------------------|--------------|
+| Join	|	Bot joins vc.	|	`join`	|
+| Leave	|	Bot exits the vc.	|	`leave`	|
+| Pause	|	Pause the queue.	|	`pause`	|
+| Play	|	Play a song in the vc.	|	`play <link>`	|
+| Queue	|	Gives you info about the server queue.	|	`queue`	|
+| Resume	|	Resume the song that was paused.	|	`resume`	|
+| Skip	|	Skip the song that its playing.	|	`skip`	|
+| Volume	|	Skip the song that its playing.	|	`volume <1-100>`	|
 ## 🔞| NSFW
 |	Command	| Description	| Usage
 |---------------|--------------------|--------------|

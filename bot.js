@@ -14,6 +14,7 @@ client.cooldowns = new Collection();
 require('./handlers/commands')(client);
 require('./handlers/events')(client);
 require('./handlers/dbConnection');
+require('./handlers/musicFunction');
 //
 const token = process.env.clientToken;
 //
@@ -33,7 +34,7 @@ if (token === '') {
 /**
  * 
  * @INFO
- * Website Coded by ZabKoz#2744
+ * Bot Coded by ZabKoz#2744
  * @INFO
  * Please mention me when you use this code!
  *

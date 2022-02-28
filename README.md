@@ -27,6 +27,7 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 | Fun	|	`meme`	|
 | Info	|	`about`, `help`, `ping`, `uptime`	|
 | Nsfw	|	`FunnyNsfw`, `Hanal`, `Hass`, `BigBoobs`, `HotMom` and **74** more!	|
+| Music	|	`Play`, `Pause`, `Queue`, `Skip`, `Join` and **3** more!	|
 * Full list of commands: [**HERE**](https://github.com/ZabKoz/GetUpBot/blob/master/COMMANDS.md).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -78,59 +79,6 @@ dbPassword = "MySQL_Password"
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Installation Linux
-* For the bot to work all the time you need to install pm2 or screen
-
-<details><summary>Information</summary>
-<p>
-
-### Installation pm2
-
-```bash
-  npm install pm2
-```
-### Installation screen
-
-```bash
-  sudo apt-get install screen
-```
-
-</p>
-</details>
-
-<br>
-
-> First you need to install all the packages
-
-```bash
-  npm install
-```
-> The next step is to create an .env file
-
-```js
-clientToken = "Bot_Token"
-clientName = "Bot_Name"
-clientID = "Bot_Id"
-clientAvatar = "https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ"
-
-testingServerID = "Id_Server_Test"
-developerID = ["ID1","ID2"]
-clientPrefix = "."
-
-dbHost = "MySQL_Host"
-dbPort = 3306
-dbDatabase = "MySQL_Database"
-dbUsername = "MySQL_Username"
-dbPassword = "MySQL_Password"
-```
-
-> The last step is to turn on the bot
-
-```bash
-  npm start
-```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 <!-- LICENSE -->
 
 ## 📄| License

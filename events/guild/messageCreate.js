@@ -155,6 +155,23 @@ client.on('messageCreate', async (message) => {
                         return;
                     };
                 }
+                
+                if (command.inVoiceChannel) {
+                    const VoiceChannel = message.member.voice.channel;
+                    if (!VoiceChannel) {
+                        //Send information that you must be on a voice channel to use this command
+                        let no_channel = new MessageEmbed()
+                            .setColor(embedError)
+                            .setTitle(`${circleno}| Musisz być na kanale głosowym!`)
+                            .setTimestamp()
+                            .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
+                        message.channel.send({ embeds: [no_channel] }).then(msg => {
+                            setTimeout(() => msg.delete(), 10000)
+                        });
+                        return;
+                    }
+                }
+
                 if (command.premiumOnly) {
                     // Checking if the server is premium
                     if (res3[0].premium === 'false') {
@@ -180,8 +197,12 @@ client.on('messageCreate', async (message) => {
                     setTimeout(() => {
                         client.cooldowns.delete(`${command.name}${message.author.id}`);
                     }, command.cooldowns);
-        
+                    try {
                         await command.run(client, message, args);
+                    } catch (e) {
+                        console.error(e)
+                        message.channel.send(`${client.emotes.error} | Error: \`${e}\``)
+                      }   
                 });
             });
         };
