@@ -2,19 +2,20 @@
 const { MessageEmbed } = require('discord.js');
 require('../../handlers/musicFunction');
 const { embedError } = require('../../config/color.json');
-const { circleno } = require('../../config/emoji.json')
+const { circleno } = require('../../config/emoji.json');
 
 module.exports = {
     name: "Play",
     aliases: ["p", "play"],
     description: "Odtwarzanie muzyki na kanale",
-    botpermissions: ["ADMINISTRATOR"],
     usage: "<link>",
     cooldowns: 2000,
     premiumOnly: false,
     inVoiceChannel: true,
     developersOnly: false,
     toggleOff: false,
+    userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
+    botpermissions: ["ADMINISTRATOR"],
     run: async (client, message, args, member) => {
        try {
             const string = args.join(' ');

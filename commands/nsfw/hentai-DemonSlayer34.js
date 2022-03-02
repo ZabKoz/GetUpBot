@@ -9,13 +9,13 @@ module.exports = {
     name: "HDemonSlayer34",
     aliases: ["HDemonslayer34", "Hdemonslayer34", "HDemonslayer34", "hdemonslayer34"],
     description: "Hentai 18+",
-    botpermissions: ["ADMINISTRATOR"],
     usage: "",
     cooldowns: 2000,
     premiumOnly: true,
     developersOnly: false,
     toggleOff: false,
-
+    userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
+    botpermissions: ["ADMINISTRATOR"],
     run: async (client, message, args) => {
         message.delete();
         if (!message.channel.nsfw) {

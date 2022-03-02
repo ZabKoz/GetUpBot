@@ -7,12 +7,13 @@ module.exports = {
    name: "uptime",
    aliases: ["up"],
    description: "Czas działania",
-   botpermissions: ["ADMINISTRATOR"],
    usage: " ",
    cooldowns: 2000,
    premiumOnly: false,
    developersOnly: false,
    toggleOff: false,
+   userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
+   botpermissions: ["ADMINISTRATOR"],
    run: async (client, message, args) => {
       message.delete();
 
@@ -27,6 +28,7 @@ module.exports = {
     });
    },
 };
+
 /**
  * 
  * @INFO

@@ -14,7 +14,6 @@ module.exports = {
     inVoiceChannel: false,
     userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
     botpermissions: ["ADMINISTRATOR"],
- 
     run: async (client, message, args) => {
         let whoto = message.mentions.members.first() || message.member;
         let avatar_embed = new MessageEmbed()

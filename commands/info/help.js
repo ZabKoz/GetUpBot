@@ -1,20 +1,20 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed, MessageActionRow, MessageSelectMenu } = require("discord.js");
-const client = require('../../bot')
-const { embedInfo } = require('../../config/color.json')
-const helpemoji = require('../../config/help.json')
+const client = require('../../bot');
+const { embedInfo } = require('../../config/color.json');
+const helpemoji = require('../../config/help.json');
 
 module.exports = {
     name: "help",
     aliases: ["h", "pomoc"],
     description: "Lista Komend",
-    botpermissions: ["ADMINISTRATOR"],
-    userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
     usage: "",
     cooldowns: 2000,
     premiumOnly: false,
     developersOnly: false,
     toggleOff: false,
+    userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
+    botpermissions: ["ADMINISTRATOR"],
     run: async (client, message, args) => {
         // Collect information about all folders commands
         const directories = [
@@ -112,6 +112,7 @@ module.exports = {
          });
     },
 };
+
 /**
  * 
  * @INFO

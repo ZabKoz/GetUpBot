@@ -7,12 +7,13 @@ module.exports = {
    name: "meme",
    //aliases: ["..."],
    description: "Memy",
-   botpermissions: ["ADMINISTRATOR"],
    usage: " ",
    cooldowns: 2000,
    premiumOnly: false,
    developersOnly: false,
    toggleOff: false,
+   userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
+   botpermissions: ["ADMINISTRATOR"],
    run: async (client, message, args) => {
       message.delete();
       try {
@@ -49,6 +50,7 @@ module.exports = {
     };
    },
 };
+
 /**
  * 
  * @INFO

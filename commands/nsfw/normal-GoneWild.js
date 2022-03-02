@@ -9,13 +9,13 @@ module.exports = {
     name: "GoneWild",
     aliases: ["gonewild"],
     description: "Normal 18+",
-    botpermissions: ["ADMINISTRATOR"],
     usage: "",
     cooldowns: 2000,
     premiumOnly: true,
     developersOnly: false,
     toggleOff: false,
-
+    userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
+    botpermissions: ["ADMINISTRATOR"],
     run: async (client, message, args) => {
         message.delete();
         if (!message.channel.nsfw) {

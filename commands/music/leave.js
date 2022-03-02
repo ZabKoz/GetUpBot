@@ -8,13 +8,14 @@ module.exports = {
     name: "Leave",
     aliases: ["leave"],
     description: "Bot opuszcza kanał",
-    botpermissions: ["ADMINISTRATOR"],
     usage: "",
     cooldowns: 2000,
     premiumOnly: false,
     inVoiceChannel: true,
     developersOnly: false,
     toggleOff: false,
+    userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
+    botpermissions: ["ADMINISTRATOR"],
     run: async (client, message, args, member) => {
        try {
             // Deleting user messages

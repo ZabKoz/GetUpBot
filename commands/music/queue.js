@@ -1,19 +1,20 @@
 const { MessageEmbed } = require('discord.js');
 require('../../handlers/musicFunction');
 const { embedError } = require('../../config/color.json');
-const { boxno, boxyes, circleno } = require('../../config/emoji.json')
+const { boxno, boxyes, circleno } = require('../../config/emoji.json');
 
 module.exports = {
     name: "Queue",
     aliases: ["list", "queue"],
     description: "Lista muzyk",
-    botpermissions: ["ADMINISTRATOR"],
     usage: "",
     cooldowns: 2000,
     premiumOnly: false,
     inVoiceChannel: true,
     developersOnly: false,
     toggleOff: false,
+    userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
+    botpermissions: ["ADMINISTRATOR"],
     run: async (client, message, args, member) => {
         // Deleting user messages
         message.delete();
