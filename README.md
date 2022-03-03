@@ -25,7 +25,7 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 |	Categories	| Commands
 |---------------|-----------------|
 | Fun	|	`meme`	|
-| Info	|	`about`, `help`, `ping`, `uptime`	|
+| Info	|	`about`, `help`, `ping`, `uptime`, `cmdhelp`	|
 | Nsfw	|	`FunnyNsfw`, `Hanal`, `Hass`, `BigBoobs`, `HotMom` and **74** more!	|
 | Music	|	`Play`, `Pause`, `Queue`, `Skip`, `Join` and **3** more!	|
 * Full list of commands: [**HERE**](https://github.com/ZabKoz/GetUpBot/blob/master/COMMANDS.md).

@@ -10,6 +10,7 @@
 |	Command	| Description	| Usage
 |---------------|--------------------|--------------|
 | about	|	Bot information.	|	`about`	|
+| cmdhelp	|	Information about the command.	|	`cmdhelp <command-name>`	|
 | help	|	List of commands.	|	`help`	|
 | ping	|	Ping bot.	|	`ping`	|
 | uptime	|	Bot runtime.	|	`uptime`	|
