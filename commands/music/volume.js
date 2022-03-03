@@ -1,7 +1,7 @@
+// ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
 require('../../handlers/musicFunction');
-const { embedError } = require('../../config/color.json');
-const { boxno, boxyes, circleno } = require('../../config/emoji.json');
+const client = require('../../bot');
 
 module.exports = {
     name: "Volume",
@@ -16,38 +16,54 @@ module.exports = {
     userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
     botpermissions: ["ADMINISTRATOR"],
     run: async (client, message, args, member) => {
-       // Deleting user messages
+       
+        // Deleting user messages
        message.delete();
+       
        // Fetching server queue data
        const queue = client.distube.getQueue(message)
+       
        // Checking if there is a server queue
        if (!queue) {
-       let volume_embed = new MessageEmbed()
-           .setColor(embedError)
-           .setTitle(`${circleno}| Obecnie w kolejce nic nie ma!`)
-           .setTimestamp()
-           .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
-       message.channel.send({ embeds: [volume_embed] }).then(msg => {
-           // After waiting 60 seconds, the message is deleted
-           setTimeout(() => msg.delete(), 60000)
-       });
-       // Interrupting further actions
-       return;
+            let volume_embed = new MessageEmbed()
+                .setColor(client.colores.embedError)
+                .setTitle(`${client.emotes.circleno}| Obecnie w kolejce nic nie ma!`)
+                .setTimestamp()
+                .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
+            
+            message.channel.send({ embeds: [volume_embed] }).then(msg => {
+                // After waiting 60 seconds, the message is deleted
+                setTimeout(() => msg.delete(), 60000)
+            });
+            
+            // Interrupting further actions
+            return;
        }
        try {
-            const volume = parseInt(args[0])
-            if (isNaN(volume)) return message.channel.send(`${client.emotes.error} | Please enter a valid number!`)
-            queue.setVolume(volume)
-            message.channel.send(`${boxyes} | Volume set to \`${volume}\``)
+            // Storing volume values in a variable
+            const volume = parseInt(args[0]);
+
+            // If a wrong value is entered, send information
+            if (isNaN(volume)) return message.channel.send(`${client.emotes.error} | Proszę podać prawidłową wartość (0-100)!`);
+            
+            // Setting values 
+            queue.setVolume(volume);
+            
+            // Sending an execution message
+            message.channel.send(`${client.emotes.boxyes} | Głośność ustawiona na: \`${volume}\``);
+
        } catch (err) {
+
             // Displaying an error in the console
             console.log(err);
+            
             // Sending an error embed
             let another_channel = new MessageEmbed()
                 .setColor(embedError)
                 .setTitle(`${circleno}| Wystąpił błąd!`)
                 .setTimestamp()
                 .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
+            
             message.channel.send({ embeds: [another_channel] }).then(msg => {
                 // After waiting 60 seconds, the message is deleted
                 setTimeout(() => msg.delete(), 60000)

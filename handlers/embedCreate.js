@@ -1,3 +1,4 @@
+// ———————————————[Handler code]———————————————
 module.exports = {
     EmbedLevelingUp: async (message, member, conn, query2) => {
         EmbedLevelingUp(message, member, conn, query2);
@@ -73,10 +74,12 @@ function EmbedLevelingUp(message, member, conn, query2) {
         });
     });
 };
-/** 
-* @INFO
-* Bot Coded by ZabKoz#2744
-* @INFO
-* Please mention me when you use this code!
-*
-*/
+
+/**
+ * 
+ * @INFO
+ * Bot Coded by ZabKoz#2744
+ * @INFO
+ * Please mention me when you use this code!
+ *
+ */

@@ -1,13 +1,13 @@
+// ———————————————[Packages]———————————————
 const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
-const { embedOk, embedError } = require('../../config/color.json');
-const { circleno, meme, meme1, meme2, meme3 } = require('../../config/emoji.json');
+const client = require('../../bot');
 
 module.exports = {
    name: "meme",
    //aliases: ["..."],
    description: "Memy",
-   usage: " ",
+   usage: "",
    cooldowns: 2000,
    premiumOnly: false,
    developersOnly: false,
@@ -15,6 +15,7 @@ module.exports = {
    userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
    botpermissions: ["ADMINISTRATOR"],
    run: async (client, message, args) => {
+      // Deleting user messages
       message.delete();
       try {
         var Responses = [
@@ -22,30 +23,34 @@ module.exports = {
             "MemyPolskaa",
             "polishfunny"
         ];
+          
         const Response = Math.floor(Math.random() * Responses.length);
+          
         const { body } = await request
             .get(`https://www.reddit.com/r/${Responses[Response]}.json?sort=top&t=week`)
             .query({
                 limit: 800
             });
+          
         const allowed = body.data.children;
         const randomnumber = Math.floor(Math.random() * allowed.length);
-        let Nsfw_embed = new MessageEmbed()
-            .setColor(embedOk)
-            .setTitle(`| Meme || ${Responses[Response]}`)
+          
+        let Meme_embed = new MessageEmbed()
+            .setColor(client.colores.embedOk)
+            .setTitle(`${client.emotes.meme}| Meme || ${Responses[Response]}`)
             .setDescription(`Tytuł: ${allowed[randomnumber].data.title}\nWysłał: ${allowed[randomnumber].data.author}`)
             .setImage(allowed[randomnumber].data.url)
             .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
-        message.channel.send({ embeds: [Nsfw_embed] }).then(embedMessage => {
-            embedMessage.react(meme3)
-            .then(() => embedMessage.react(meme1))
-            .then(() => embedMessage.react(meme2))
+        message.channel.send({ embeds: [Meme_embed] }).then(embedMessage => {
+            embedMessage.react(client.emotes.meme3)
+            .then(() => embedMessage.react(client.emotes.meme1))
+            .then(() => embedMessage.react(client.emotes.meme2))
         })
     } catch (err) {
-        let NoNsfw_embed = new MessageEmbed()
-            .setColor(embedError)
-            .setTitle(`${circleno}| Wystąpił błąd!`)
-        message.channel.send({ embeds: [NoNsfw_embed] })
+        let Meme_embed = new MessageEmbed()
+            .setColor(client.colores.embedError)
+            .setTitle(`${client.emotes.circleno}| Wystąpił błąd!`)
+        message.channel.send({ embeds: [Meme_embed] })
         console.log(err);
     };
    },

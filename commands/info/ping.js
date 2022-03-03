@@ -1,5 +1,6 @@
+// ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
-const { embedOk } = require('../../config/color.json');
+const client = require('../../bot');
 
 module.exports = {
    name: "ping",
@@ -15,7 +16,7 @@ module.exports = {
    run: async (client, message, args) => {
       message.delete()
       let ping_embed = new MessageEmbed()
-         .setColor(embedOk)
+         .setColor(client.colores.embedOk)
          .setTitle('Pingowanie...')
          .setDescription(`🏓\`${client.ws.ping}ms\``)
          .setTimestamp()

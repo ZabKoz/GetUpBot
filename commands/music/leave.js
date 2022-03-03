@@ -1,8 +1,7 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
 require('../../handlers/musicFunction');
-const { embedError } = require('../../config/color.json');
-const { boxno, boxyes, circleno } = require('../../config/emoji.json');
+const client = require('../../bot');
 
 module.exports = {
     name: "Leave",
@@ -18,20 +17,26 @@ module.exports = {
     botpermissions: ["ADMINISTRATOR"],
     run: async (client, message, args, member) => {
        try {
+
             // Deleting user messages
             message.delete();
+
             // Leaving a channel by a bot
             client.distube.voices.leave(message);
+            
         } catch (err) {
+
             // Displaying an error in the console
             console.log(err);
+
             // Sending an error embed
             let another_channel = new MessageEmbed()
-                .setColor(embedError)
-                .setTitle(`${circleno}| Wystąpił błąd!`)
+                .setColor(client.colores.embedError)
+                .setTitle(`${client.emotes.circleno}| Wystąpił błąd!`)
                 .setTimestamp()
                 .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
-            message.channel.send({ embeds: [another_channel] }).then(msg => {
+            
+                message.channel.send({ embeds: [another_channel] }).then(msg => {
                 // After waiting 60 seconds, the message is deleted
                 setTimeout(() => msg.delete(), 60000)
             });

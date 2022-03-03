@@ -11,21 +11,27 @@ const messageFunction = require('../../handlers/messageFunction');
 let conn;
 conn = dbConnect();
 
+// ———————————————[Event code]———————————————
 client.on('messageCreate', async (message) => {
+    
     // Checking that the message is not from a bot and that the channel type is not DM
     if (message.author.bot || message.channel.type === "DM") return;
+    
     // Query the database for the prefix for a given server
     conn.query("SELECT * FROM guildPrefix WHERE guildId = ?", [message.guild.id], async (err1, res1) => {
+        
         // If there is an error display it
         if (err1) {
             console.log(`Error #1 MessageCreate`);
             console.log(err1);
             return;
         }
+        
         // If the query result is greater than 0
         if (res1.length > 0) {
             conn.query("SELECT * FROM guildSettings WHERE guildId = ?", [message.guild.id], async (err2, res2) => {
                 conn.query("SELECT * FROM guildPremium WHERE guildId = ?", [message.guild.id], async (err3, res3) => {
+                    
                 // Saves the value of the prefix variable as the prefix from the query
                 const prefix = res1[0].guildPrefix;
                 
@@ -35,7 +41,8 @@ client.on('messageCreate', async (message) => {
                     console.log(err2);
                     return;
                 };
-
+                    
+                // If the query result is greater than 0
                 if (res2.length > 0) {
                     messageFunction.handleMessages(message, conn, res2)
                 };
@@ -48,6 +55,7 @@ client.on('messageCreate', async (message) => {
                     .slice(prefix.length)
                     .trim()
                     .split(" ");
+                    
                 // Send information if user only sent prefix
                 let noargs_embed = new MessageEmbed()
                     .setTitle(`${info}| Nasze komendy znajdziesz pod \`${prefix}help\``)
@@ -81,6 +89,7 @@ client.on('messageCreate', async (message) => {
 
                 
                 if (command.toggleOff) {
+
                     // Send information if the command has been deactivated
                     let toggleoff_embed = new MessageEmbed()
                         .setTitle(`${circleno}| Ups!`)
@@ -96,6 +105,7 @@ client.on('messageCreate', async (message) => {
                 }
 
                 if (!message.guild.me.permissions.has(command.botpermissions || [])) {
+
                     // Send information that the bot does not have permissions to execute this
                     let botperms_embed = new MessageEmbed()
                         .setTitle(`${circleno}| Nie mam uprawnień do używania tego polecenia!`)
@@ -111,6 +121,7 @@ client.on('messageCreate', async (message) => {
                 }
 
                 if (command.developersOnly) {
+
                     // Checking if the user is among the developers
                     if (!process.env.developerID.includes(message.author.id)) {
 
@@ -130,6 +141,7 @@ client.on('messageCreate', async (message) => {
                 }
 
                 if (command.cooldowns) {
+
                     // Check if the user has cooldown
                     if (client.cooldowns.has(`${command.name}${message.author.id}`)) {
 
@@ -157,8 +169,11 @@ client.on('messageCreate', async (message) => {
                 }
                 
                 if (command.inVoiceChannel) {
+                    
                     const VoiceChannel = message.member.voice.channel;
+                    
                     if (!VoiceChannel) {
+                        
                         //Send information that you must be on a voice channel to use this command
                         let no_channel = new MessageEmbed()
                             .setColor(embedError)
@@ -173,9 +188,13 @@ client.on('messageCreate', async (message) => {
                 }
 
                 if (command.premiumOnly) {
+                    
                     // Checking if the server is premium
+                    
                     if (res3[0].premium === 'false') {
+                        
                         // If the server has the setting "premium = false" display the information
+                        
                         let premiumOnly_embed = new MessageEmbed()
                             .setTitle(`${circleno}| Tylko servery premium mogą używać tego polecenia!`)
                             .setColor(embedError)
@@ -201,17 +220,19 @@ client.on('messageCreate', async (message) => {
                         await command.run(client, message, args);
                     } catch (e) {
                         console.error(e)
-                        message.channel.send(`${client.emotes.error} | Error: \`${e}\``)
+                        message.channel.send(`❗ | Error: \`${e}\``)
                       }   
                 });
             });
         };
     });
 });
-/** 
-* @INFO
-* Bot Coded by ZabKoz#2744
-* @INFO
-* Please mention me when you use this code!
-*
-*/
+
+/**
+ * 
+ * @INFO
+ * Bot Coded by ZabKoz#2744
+ * @INFO
+ * Please mention me when you use this code!
+ *
+ */

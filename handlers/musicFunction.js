@@ -6,9 +6,10 @@ const { YtDlpPlugin } = require('@distube/yt-dlp');
 const client = require('../bot');
 const { MessageEmbed } = require('discord.js');
 
+// ———————————————[Handler code]———————————————
 client.distube = new DisTube(client, {
-    leaveOnStop: false,
-    leaveOnFinish: true,
+    leaveOnStop: false, // If the music is stopped it should output [true = on | false = off].
+    leaveOnFinish: true, // If the bot finishes playing it should exit [true = on | false = off].
     emitNewSongOnly: true,
     emitAddSongWhenCreatingQueue: false,
     emitAddListWhenCreatingQueue: false,

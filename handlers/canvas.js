@@ -1,3 +1,4 @@
+// ———————————————[Handler code]———————————————
 module.exports = {
     
     /**
@@ -18,3 +19,12 @@ module.exports = {
         return ctx.font;
     }
 }
+
+/**
+ * 
+ * @INFO
+ * Bot Coded by ZabKoz#2744
+ * @INFO
+ * Please mention me when you use this code!
+ *
+ */

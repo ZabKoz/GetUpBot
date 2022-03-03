@@ -1,10 +1,9 @@
 // ———————————————[Packages]———————————————
-const { MessageEmbed } = require("discord.js")
-const { readdirSync } = require("fs")
-const ms = require("ms")
-const { embedError, embedRandom, } = require("../../config/color.json")
-const prefix = "x?"
-const { dbConnect } = require('../../handlers/dbConnection')
+const { MessageEmbed } = require("discord.js");
+const { dbConnect } = require('../../handlers/dbConnection');
+const { readdirSync } = require("fs");
+const ms = require("ms");
+const client = require('../../bot');
 
 // ———————————————[Variables]———————————————
 let conn;
@@ -31,14 +30,14 @@ module.exports = {
             return;
          }
          // If the query result is greater than 0
-         if (results.length > 0) {
+         if (res1.length > 0) {
             // Saves the value of the prefix variable as the prefix from the query
             const prefix = res1[0].guildPrefix;
             // If no argument is given
             if (!args[0]) {
                message.delete()
                let Embed = new MessageEmbed()
-               .setColor(embedError)
+               .setColor(client.colores.embedError)
                .setTitle(`:x: | Proszę podać nazwę polecenia`)
                .setTimestamp()
                .setFooter(
@@ -70,7 +69,7 @@ module.exports = {
                         message.delete();
                         // Creating an embed 
                         let Embed = new MessageEmbed()
-                        .setColor(embedError)
+                        .setColor(client.colores.embedError)
                         .setTitle(`:x: | Brak nazwy polecenia`)
                         .setTimestamp()
                         .setFooter(
@@ -126,7 +125,7 @@ module.exports = {
                   // Creating an embed 
                   const embed = new MessageEmbed()
                      .setTitle(`:x: | Złe polecenie! Używam ${prefix}help dla wszystkich moich poleceń!`)
-                     .setColor(embedError)
+                     .setColor(client.colores.embedError)
                      .setTimestamp()
                      .setFooter(
                         {
@@ -145,7 +144,7 @@ module.exports = {
                const embed = new MessageEmbed()
                   .setTitle(`Szczegóły polecenia:`)
                   .setTimestamp()
-                  .setColor(embedRandom)
+                  .setColor(client.colores.embedRandom)
 
                   // Adding command name information to the embed
                   .addField(

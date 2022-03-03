@@ -24,6 +24,7 @@ const chalk = require('chalk');
  * That way your connection won't time out.
  */
 
+// ———————————————[Handler code]———————————————
 const conn = mysql.createPool({
     host: process.env.dbHost,
     port: process.env.dbPort,
@@ -65,7 +66,7 @@ module.exports = {
 /**
  * 
  * @INFO
- * Website Coded by ZabKoz#2744
+ * Bot Coded by ZabKoz#2744
  * @INFO
  * Please mention me when you use this code!
  *

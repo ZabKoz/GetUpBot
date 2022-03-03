@@ -1,3 +1,4 @@
+// ———————————————[Handler code]———————————————
 module.exports = {
     CanvasLevelingUp: async (message, member, conn, query2) => {
         CanvasLevelingUp(message, member, conn, query2);
@@ -5,6 +6,7 @@ module.exports = {
 };
 
 function CanvasLevelingUp(message, member, conn, query2) {
+    
     // ———————————————[Packages]———————————————
     const { MessageAttachment } = require('discord.js');
     const Canvas = require('canvas');
@@ -172,3 +174,12 @@ function CanvasLevelingUp(message, member, conn, query2) {
         });
     });
 }
+
+/**
+ * 
+ * @INFO
+ * Bot Coded by ZabKoz#2744
+ * @INFO
+ * Please mention me when you use this code!
+ *
+ */

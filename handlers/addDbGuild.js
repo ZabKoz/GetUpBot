@@ -2,12 +2,16 @@
 const { dbConnect } = require('./dbConnection.js');
 const chalk = require('chalk');
 
+// ———————————————[Variables]———————————————
 let conn
 conn = dbConnect()
 
+// ———————————————[Handler code]———————————————
 module.exports = {
+    
     // Function responsible for checking if a server exists and adding it
     addDbGuild: (guildId) => {
+        
         // Checking if a server exists in the guildPrefix table
         conn.query("SELECT * FROM guildPrefix WHERE guildId = ?", [guildId], (err, res) => {
             // If the result is 0
@@ -18,6 +22,7 @@ module.exports = {
                 console.log(chalk.gray('Dodano: ') + chalk.red.underline.bold(`${guildId} `) + chalk.gray('do tabeli prefix'));
             };
         });
+        
         // Checking if a server exists in the guildSettings table
         conn.query("SELECT * FROM guildSettings WHERE guildId = ?", [guildId], (err, res1) => {
             // If the result is 0
@@ -28,6 +33,7 @@ module.exports = {
                 console.log(chalk.gray('Dodano: ') + chalk.red.underline.bold(`${guildId} `) + chalk.gray('do tabeli ustawień'));
             };
         });
+        
         // Checking if a server exists in the guildPremium table
         conn.query("SELECT * FROM guildPremium WHERE guildId = ?", [guildId], (err, res2) => {
             // If the result is 0
@@ -40,6 +46,7 @@ module.exports = {
         });
     },
 };
+
 /**
  * 
  * @INFO

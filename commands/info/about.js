@@ -1,7 +1,6 @@
+// ———————————————[Packages]———————————————
 const { MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton } = require('discord.js');
-const { embedOk } = require('../../config/color.json');
-const { dscUsers, dscServers, dscCommands, github, dscSettings } = require('../../config/emoji.json');
-const client = require('../../bot')
+const client = require('../../bot');
 
 module.exports = {
    name: "about",
@@ -15,24 +14,23 @@ module.exports = {
    userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
    botpermissions: ["ADMINISTRATOR"],
    run: async (client, message, args) => {
+      // Deleting user messages
       message.delete();
 
       const ghButton = new MessageButton()
       .setStyle('LINK')
       .setURL('https://github.com/ZabKoz/GetUpBot')
       .setLabel('Source Code')
-      .setEmoji(github);
+      .setEmoji(client.emotes.github);
 
-    
-      
       let about_embed = new MessageEmbed()
-        .setColor(embedOk)
+        .setColor(client.colores.embedOk)
         .setTitle('Ciekawostki o mnie?')
         .addFields(
-            { name: `${dscUsers}| Użytkownicy:`, value: `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)}` },
-            { name: `${dscServers}| Servery:`, value: `${client.guilds.cache.size}` },
-            { name: `${dscCommands}| Komendy:`, value: `${client.commands.size}`, inline: false },
-            { name: `${dscSettings}| Prefix:`, value: `${process.env.clientPrefix}`, inline: false },
+            { name: `${client.emotes.dscUsers}| Użytkownicy:`, value: `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)}` },
+            { name: `${client.emotes.dscServers}| Servery:`, value: `${client.guilds.cache.size}` },
+            { name: `${client.emotes.dscCommands}| Komendy:`, value: `${client.commands.size}`, inline: false },
+            { name: `${client.emotes.dscSettings}| Prefix:`, value: `${process.env.clientPrefix}`, inline: false },
         )
         .setTimestamp()
         .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });

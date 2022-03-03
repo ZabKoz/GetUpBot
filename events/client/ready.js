@@ -2,7 +2,9 @@
 const chalk = require('chalk');
 const client = require('../../bot');
 
+// ———————————————[Event code]———————————————
 client.on('ready', async () => {
+    
     /**
      * 
      * @INFO
@@ -12,6 +14,7 @@ client.on('ready', async () => {
      * Types of bot activity ( COMPETING, LISTENING, PLAYING, STREAMING, WATCHING )
      * 
     */
+    
     // Set bot activity
     const activities = [
         `Servery: ${client.guilds.cache.size}`,
@@ -28,16 +31,19 @@ client.on('ready', async () => {
 
     client.user.setActivity(newActivity, {type: 'WATCHING'});
     }, 10000);
+    
     // Information bot
     console.log(
         chalk.gray('—————————————————') +
         chalk.white('[') + chalk.red('Informacje Bot') + chalk.white(']') + 
         chalk.gray('—————————————————')
     );
+    
     // Information on which user is logged in
     console.log(
         chalk.gray('Zalogowano jako:   '), chalk.red.underline.bold(client.user.tag)
     );
+    
     // Information on how many users the bot watches over
     console.log(
         chalk.gray('Czuwam nad:        '),
@@ -50,6 +56,7 @@ client.on('ready', async () => {
             }`
         )
     );
+    
     // Information on how many command bot has
     console.log(
         chalk.gray('Posiadam:          '),
@@ -57,6 +64,7 @@ client.on('ready', async () => {
         chalk.grey(`Komend`)
     );
 });
+
 /**
  * 
  * @INFO

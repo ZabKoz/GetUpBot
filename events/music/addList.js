@@ -1,9 +1,12 @@
+// ———————————————[Packages]———————————————
 const { MessageEmbed } = require("discord.js");
 const client = require('../../bot');
 const { embedRandom } = require('../../config/color.json');
 const { YoutubemMusic, RB_Views, animatedBubble, Time } = require('../../config/emoji.json');
 
+// ———————————————[Event code]———————————————
 client.distube.on("addList", (queue, song) => {
+    
     let addSong_embed = new MessageEmbed()
         .setColor(embedRandom)
         .setTitle(`Dodano muzykę do kolejki`)
@@ -13,7 +16,7 @@ client.distube.on("addList", (queue, song) => {
         .addField(`${Time}| Czas: `, `${song.formattedDuration}`, true)
         .addField(`${animatedBubble}| Proszone przez:`, `${song.user}`, false)
         .setTimestamp()
-        .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
+        .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` });
     queue.textChannel.send({ embeds: [addSong_embed] });
 });
 

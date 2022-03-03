@@ -1,7 +1,6 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed, MessageActionRow, MessageSelectMenu } = require("discord.js");
 const client = require('../../bot');
-const { embedInfo } = require('../../config/color.json');
 const helpemoji = require('../../config/help.json');
 
 module.exports = {
@@ -16,6 +15,7 @@ module.exports = {
     userpermissions: ["SEND_MESSAGES", "VIEW_CHANNEL"],
     botpermissions: ["ADMINISTRATOR"],
     run: async (client, message, args) => {
+        
         // Collect information about all folders commands
         const directories = [
             ...new Set(client.commands.map((cmd) => cmd.directory)),
@@ -49,7 +49,7 @@ module.exports = {
         const embed = new MessageEmbed()
             .setTitle(`${process.env.clientName || "Bot"} Komendy`)
             .setDescription(`Proszę wybrać jedną z opcji z poniższej listy!`)
-            .setColor(embedInfo)
+            .setColor(client.colores.embedInfo)
             .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
             .setTimestamp();
         
@@ -101,7 +101,7 @@ module.exports = {
                .setDescription(
                   "" + category.commands.map((cmd) => `✪ | \`${cmd.name}\` (*${cmd.description}*)`).join("\n ")
                )
-               .setColor(embedInfo)
+               .setColor(client.colores.embedInfo)
                .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
 
             interaction.update({ embeds: [embed2] });

@@ -12,6 +12,7 @@ conn = dbConnect();
 
 const cooldown = new Set();
 
+// ———————————————[Handler code]———————————————
 module.exports = {
     handleMessages: async (message, conn, res2, client) => {
         const member = message.member;
@@ -74,10 +75,12 @@ function handleLeveling(message, member, client) {
         });
     });
 };
-/** 
-* @INFO
-* Bot Coded by ZabKoz#2744
-* @INFO
-* Please mention me when you use this code!
-*
-*/
+
+/**
+ * 
+ * @INFO
+ * Bot Coded by ZabKoz#2744
+ * @INFO
+ * Please mention me when you use this code!
+ *
+ */
