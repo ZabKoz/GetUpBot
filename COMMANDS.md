@@ -25,7 +25,7 @@
 | Queue	|	Gives you info about the server queue.	|	`queue`	|
 | Resume	|	Resume the song that was paused.	|	`resume`	|
 | Skip	|	Skip the song that its playing.	|	`skip`	|
-| Volume	|	Skip the song that its playing.	|	`volume <1-100>`	|
+| Volume	|	volume setting.	|	`volume <0-100>`	|
 ## 🔞| NSFW
 |	Command	| Description	| Usage
 |---------------|--------------------|--------------|
