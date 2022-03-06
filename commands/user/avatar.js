@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
-const { embedError, embedRandom} = require('../../config/color.json');
-const {} = require('../../config/emoji.json');
+const client = require('../../bot');
+const embedCreate = require('../../handlers/embedCreate');
 
 module.exports = {
     name: "Avatar",
@@ -17,7 +17,7 @@ module.exports = {
     run: async (client, message, args) => {
         let whoto = message.mentions.members.first() || message.member;
         let avatar_embed = new MessageEmbed()
-            .setColor(embedRandom)
+            .setColor(client.colores.embedRandom)
             .setTitle(`Avatar`)
             .addField(
                 `PNG`,

@@ -4,6 +4,36 @@ module.exports = {
         EmbedLevelingUp(message, member, conn, query2);
         // Finish later
     },
+    ErrorEmbed: async (client, message, err) => {
+        CreateErrorEmbed(client, message, err);
+        // Finish later
+    },
+    NSFWEmbed: async (client, message, err, ErrType) => {
+        if (err) {
+            /**
+             * 
+             * @INFO
+             * CENHE - Function responsible for error information in hentai commands
+             * CENNE - Function responsible for error information in normal commands
+             * CENE - The function responsible for informing that a channel is not suitable for this content
+             * 
+             */
+
+            if (ErrType === "hentai") {
+                CENHE(client, message, err);
+                return;
+            };
+
+            if (ErrType === "normal") {
+                CENNE(client, message, err);
+                return;
+            };
+            
+        } else {
+            CENE(client, message);
+            return;
+        }
+    },
 };
 
 function EmbedLevelingUp(message, member, conn, query2) {
@@ -73,6 +103,69 @@ function EmbedLevelingUp(message, member, conn, query2) {
             });
         });
     });
+};
+// Function for creating an embed with the error
+function CreateErrorEmbed(client, message, err) {
+    // ———————————————[Packages]———————————————
+    const { MessageEmbed } = require('discord.js');
+
+    let NoNsfw_embed = new MessageEmbed()
+        .setColor(client.colores.embedError)
+        .setTitle(`${client.emotes.circleno}| Wystąpił błąd!`)
+    message.channel.send({ embeds: [NoNsfw_embed] })
+    console.log(err);
+};
+
+// Function for creating an embed with the error "wrong channel"
+function CENE(client, message) {
+    // ———————————————[Packages]———————————————
+    const { MessageEmbed } = require('discord.js');
+
+    let noNsfw_embed = new MessageEmbed()
+        .setColor(client.colores.embedError)
+        .setTitle(`${client.emotes.circleno} | Ta komenda jest dozwolona tylko na kanałach \`NSFW\``)
+        .setImage('https://media2.giphy.com/media/ToMjGpx9F5ktZw8qPUQ/giphy-downsized-large.gif')
+        .setTimestamp()
+        .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
+            
+    message.channel.send({ embeds: [noNsfw_embed] })
+    .then(msg => {
+        setTimeout(() => msg.delete(), 10000)
+    });
+}
+
+// Function for creating an embed with an error
+function CENHE(client, message, err) {
+    // ———————————————[Packages]———————————————
+    const { MessageEmbed } = require('discord.js');
+
+    let NoNsfw_embed = new MessageEmbed()
+        .setColor(client.colores.embedError)
+        .setTitle(`${client.emotes.boxno}| Upsss... Coś poszło nie tak!`)
+        .setDescription(`Niestety ale bot napotkał pewien problem należy to zgłosić!`)
+        .setImage('attachment://404_h.gif')
+        .setTimestamp()
+        .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
+
+    message.channel.send({ embeds: [NoNsfw_embed], files: ['./assets/images/error/404_h.gif'] });
+    console.log(err);
+};
+
+// Function for creating an embed with an error
+function CENNE(client, message, err) {
+    // ———————————————[Packages]———————————————
+    const { MessageEmbed } = require('discord.js');
+
+    let NoNsfw_embed = new MessageEmbed()
+        .setColor(client.colores.embedError)
+        .setTitle(`${client.emotes.boxno}| Upsss... Coś poszło nie tak!`)
+        .setDescription(`Niestety ale bot napotkał pewien problem należy to zgłosić!`)
+        .setImage('attachment://404.png')
+        .setTimestamp()
+        .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
+
+    message.channel.send({ embeds: [NoNsfw_embed], files: ['./assets/images/error/404.png'] });
+    console.log(err);
 };
 
 /**

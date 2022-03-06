@@ -33,7 +33,7 @@ function handleLeveling(message, member, client) {
             // Extracting information about a user's exp
             let xptoget = query2.length == 0 ? 400 : query2[0].userLevel * 400;
             // Exp calculation
-            let xptogive = Math.floor(Math.random() * 15) + 5;
+            let xptogive = Math.floor(Math.random() * 10) + 5;
             // Adding cooldown per user on a given server
             if (cooldown.has(`${message.author.id}:${message.guild.id}`)) return;
             // Checking in the database if the search gave a result equal to 0
