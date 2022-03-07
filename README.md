@@ -41,8 +41,21 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 
 #### 📦| Used packages in this project:
 
-* [Discord.js v13.6.0](https://discord.js.org/)
-* [Node v17.1.0](https://nodejs.org/en/)
+* [@distube/soundcloud v1.1.0](https://discord.js.org/)
+* [@distube/spotify v1.2.1](https://nodejs.org/en/)
+* [@distube/yt-dlp v1.0.2](https://nodejs.org/en/)
+* [canvas v2.9.0](https://nodejs.org/en/)
+* [chalk v4.1.2](https://nodejs.org/en/)
+* [distube v3.3.2](https://www.npmjs.com/package/distube)
+* [dotenv v16.0.0](https://nodejs.org/en/)
+* [ffmpeg-static v0.7.9](https://nodejs.org/en/)
+* [glob v7.2.0](https://nodejs.org/en/)
+* [ms v2.1.3](https://nodejs.org/en/)
+* [mysql v2.18.1](https://nodejs.org/en/)
+* [node-superfetch v0.2.3](https://nodejs.org/en/)
+* [nodemon v2.0.15](https://nodejs.org/en/)
+* [opusscript v0.0.8](https://nodejs.org/en/)
+* [util v0.12.4](https://nodejs.org/en/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
