@@ -12,7 +12,7 @@
 
 # 🤖| GetUpBot [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ZabKoz_GetUpBot&metric=ncloc)](https://sonarcloud.io/dashboard?id=ZabKoz_GetUpBot)
 
-> Welcome to the discord bot project, connecting to a MySQL bot database. Created with passion bot slowly gets more and more functions and commands.
+> GetUp is an open source, fully customizable Discord bot that is constantly evolving. You can also join the official GetUp support server for all your questions, suggestions and help! There are many commands and settings included that can be customized to meet the specific needs of your server.
 
 <br><br><br>
 
@@ -32,21 +32,36 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## 🔗| Built With
 
-
-### Built With
-
-Used in this project:
+#### 🔰| Used in this project:
 
 * [Discord.js v13.6.0](https://discord.js.org/)
 * [Node v17.1.0](https://nodejs.org/en/)
 
+#### 📦| Used packages in this project:
+
+* [@distube/soundcloud v1.1.0](https://discord.js.org/)
+* [@distube/spotify v1.2.1](https://nodejs.org/en/)
+* [@distube/yt-dlp v1.0.2](https://nodejs.org/en/)
+* [canvas v2.9.0](https://nodejs.org/en/)
+* [chalk v4.1.2](https://nodejs.org/en/)
+* [distube v3.3.2](https://www.npmjs.com/package/distube)
+* [dotenv v16.0.0](https://nodejs.org/en/)
+* [ffmpeg-static v0.7.9](https://nodejs.org/en/)
+* [glob v7.2.0](https://nodejs.org/en/)
+* [ms v2.1.3](https://nodejs.org/en/)
+* [mysql v2.18.1](https://nodejs.org/en/)
+* [node-superfetch v0.2.3](https://nodejs.org/en/)
+* [nodemon v2.0.15](https://nodejs.org/en/)
+* [opusscript v0.0.8](https://nodejs.org/en/)
+* [util v0.12.4](https://nodejs.org/en/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Getting Started THE PROJECT -->
 ## ⚙| Getting Started
-## Installation Windows
+### Installation Windows
 
 > First you need to install all the packages
 
@@ -78,6 +93,19 @@ dbPassword = "MySQL_Password"
   npm start
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- TO-Do -->
+## 📝 To-Do
+```
+- [x] Leveling system
+- [ ] Inventory system
+- [ ] Level rewards
+- [ ] Global levelling
+```
+
+<!-- Suggestions -->
+## 💬| Suggestions
+> If you have any suggestions, please write to me in the Issues tab.
 
 <!-- LICENSE -->
 
