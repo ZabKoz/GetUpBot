@@ -40,22 +40,16 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 * [Node v17.1.0](https://nodejs.org/en/)
 
 #### 📦| Used packages in this project:
-
-* [@distube/soundcloud v1.1.0](https://discord.js.org/)
-* [@distube/spotify v1.2.1](https://nodejs.org/en/)
-* [@distube/yt-dlp v1.0.2](https://nodejs.org/en/)
-* [canvas v2.9.0](https://nodejs.org/en/)
-* [chalk v4.1.2](https://nodejs.org/en/)
-* [distube v3.3.2](https://www.npmjs.com/package/distube)
-* [dotenv v16.0.0](https://nodejs.org/en/)
-* [ffmpeg-static v0.7.9](https://nodejs.org/en/)
-* [glob v7.2.0](https://nodejs.org/en/)
-* [ms v2.1.3](https://nodejs.org/en/)
-* [mysql v2.18.1](https://nodejs.org/en/)
-* [node-superfetch v0.2.3](https://nodejs.org/en/)
-* [nodemon v2.0.15](https://nodejs.org/en/)
-* [opusscript v0.0.8](https://nodejs.org/en/)
-* [util v0.12.4](https://nodejs.org/en/)
+|	Package	| Version |	Package	| Version
+|---------------|-----------------|---------------|-----------------|
+| [@distube/soundcloud](https://www.npmjs.com/package/@distube/soundcloud)	|	`1.1.0`	| [glob](https://www.npmjs.com/package/glob)	                           |	`7.2.0`	|
+| [@distube/spotify](https://www.npmjs.com/package/@distube/spotify)	      |	`1.2.1`	| [ms](https://www.npmjs.com/package/ms)	                               |	`2.1.3`	|
+| [@distube/yt-dlp](https://www.npmjs.com/package/@distube/youtube-dl)	    |	`1.0.2`	| [mysql](https://www.npmjs.com/package/mysql)	                         |	`2.18.1`|
+| [canvas](https://www.npmjs.com/package/canvas)	                          |	`2.9.0`	| [node-superfetch](https://www.npmjs.com/package/node-superfetch)	     |	`0.2.3`	|
+| [chalk](https://www.npmjs.com/package/chalk)	                            |	`4.1.2`	| [nodemon](https://www.npmjs.com/package/nodemon)	                     |	`2.0.15`|
+| [distube](https://www.npmjs.com/package/distube)	                        |	`3.3.2`	| [opusscript](https://www.npmjs.com/package/opusscript)	               |	`0.0.8`	|
+| [dotenv](https://www.npmjs.com/package/dotenv)	                          |	`16.0.0`| [util](https://www.npmjs.com/package/util)	                           |	`0.12.4`|
+| [ffmpeg-static](https://www.npmjs.com/package/ffmpeg-static)	            |	`0.7.9`	| [libsodium-wrappers](https://www.npmjs.com/package/libsodium-wrappers) |	`0.7.9`|
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
