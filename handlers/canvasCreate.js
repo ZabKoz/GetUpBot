@@ -134,9 +134,9 @@ function CanvasLevelingUp(message, member, conn, query2) {
                         ctx.fillRect(50 + 30, 30 + 180 + 30, 180, 50);
                         ctx.globalAlpha = 1;
                         ctx.fillStyle = colorRank;
-                        ctx.font = applyText(canvas, 'Rank:' + userRank, 32, 170, "Blod");
+                        ctx.font = applyText(canvas, 'Ranking:' + userRank, 32, 170, "Blod");
                         ctx.textAlign = "center";
-                        ctx.fillText('R: ' + userRank, 50 + 30 + 180 / 2, 30 + 180 + 30 + 38);
+                        ctx.fillText('Ranking:', 50 + 30 + 180 / 2, 30 + 180 + 30 + 38);
 
                         // Creating a canvas Level
                         ctx.fillStyle = colorLevelBox;
@@ -144,9 +144,9 @@ function CanvasLevelingUp(message, member, conn, query2) {
                         ctx.fillRect(50 + 30, 30 + 180 + 30 + 50 + 30, 180, 50);
                         ctx.globalAlpha = 1;
                         ctx.fillStyle = colorLevel;
-                        ctx.font = applyText(canvas, 'Lvl:' + userLevel, 32, 170, "Bold");
+                        ctx.font = applyText(canvas, userRank, 32, 170, "Bold");
                         ctx.textAlign = "center";
-                        ctx.fillText('L: ' + userLevel, 50 + 30 + 180 / 2, 30 + 180 + 30 + 30 + 50 + 38);
+                        ctx.fillText(userRank, 50 + 30 + 180 / 2, 30 + 180 + 30 + 30 + 50 + 38);
                         
                         // Creating a canvas Username
                         ctx.textAlign = 'right';
