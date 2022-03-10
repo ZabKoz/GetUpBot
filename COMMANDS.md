@@ -109,9 +109,13 @@
 | Wives	|	Look at Normal NSFW.	|	`Wives`	|
 | Yoga	|	Look at Normal NSFW.	|	`Yoga`	|
 
+## 👦| User
+|	Command	| Description	| Usage
+|---------------|--------------------|--------------|
+| Avatar	|	Uploading a user avatar to a channel.	|	`avatar [@user]`	|
 
-
-
-
-
+## 🎞| Watch
+|	Command	| Description	| Usage
+|---------------|--------------------|--------------|
+| Watchyt	|	Watching Youtube via together.	|	`watchyt`	|
 
