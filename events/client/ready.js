@@ -17,7 +17,7 @@ client.on('ready', async () => {
     
     // Set bot activity
     const activities = [
-        `Servery: ${client.guilds.cache.size}`,
+        `${process.env.clientPrefix}help`,
         `Servery: ${client.guilds.cache.size}`,
         `${client.commands.size} Komendy`,
         `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} Użytkowników`,
@@ -32,37 +32,67 @@ client.on('ready', async () => {
     client.user.setActivity(newActivity, {type: 'WATCHING'});
     }, 10000);
     
-    // Information bot
-    console.log(
-        chalk.gray('—————————————————') +
-        chalk.white('[') + chalk.red('Informacje Bot') + chalk.white(']') + 
-        chalk.gray('—————————————————')
-    );
-    
     // Information on which user is logged in
     console.log(
-        chalk.gray('Zalogowano jako:   '), chalk.red.underline.bold(client.user.tag)
+        chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
+        chalk.gray(`Logged in as: `) +
+        chalk.red.underline.bold(client.user.tag)
     );
     
-    // Information on how many users the bot watches over
+    // Information about the number of servers the bot is on
     console.log(
-        chalk.gray('Czuwam nad:        '),
-        chalk.red.bold(`${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} `) +
+        chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
+        chalk.gray(`All Servers: `) +
+        chalk.red.underline.bold(`${client.guilds.cache.size}`) +
+        chalk.gray.bold(
+            `${
+                client.guilds.cache.size > 1
+                  ? " Servers."
+                  : " Server."
+            }`
+        )
+    );
+
+    // Information on how many command bot has
+    console.log(
+        chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
+        chalk.gray(`Watching over: `) +
+        chalk.red.underline.bold(`${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)}`) +
         chalk.gray.bold(
             `${
                 client.guilds.cache.reduce((a, b) => a + b.memberCount, 0) > 1
-                  ? "Użytkownikami"
-                  : "Użytkownikiem"
+                  ? " Users."
+                  : " User."
             }`
         )
     );
     
     // Information on how many command bot has
     console.log(
-        chalk.gray('Posiadam:          '),
-        chalk.red.bold(`${client.commands.size}`),
-        chalk.grey(`Komend`)
+        chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
+        chalk.gray(`I have: `) + chalk.red.underline.bold(`${client.commands.size}`) +
+        chalk.grey(` Commands.`)
     );
+
+    // Basic bot prefix information
+    console.log(
+        chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
+        chalk.gray(`Basic prefix: `) + chalk.red.bold(`${process.env.clientPrefix}`)
+    );
+    
+    console.log('');
+    console.log('');
+
+    // Contact information
+    console.log(
+        chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
+        chalk.gray(`Still Need Help? Contact Me:\n`) +
+        chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
+        chalk.red.bold(`Discord: ZabKoz#2744\n`) +
+        chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
+        chalk.red.bold(`Discord Server: [In the future]`)
+    );
+
 });
 
 /**

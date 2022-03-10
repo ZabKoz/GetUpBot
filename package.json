@@ -5,7 +5,8 @@
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ."
+    "start2": "node shard.js",
+    "start": "node ."
   },
   "repository": {
     "type": "git",

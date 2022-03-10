@@ -1,5 +1,4 @@
 // ———————————————[Packages]———————————————
-require('dotenv').config();
 const mysql = require('mysql');
 const chalk = require('chalk');
 
@@ -37,31 +36,30 @@ conn.getConnection(function (err) {
     if (err) {
         // Error message when trying to connect bot to database
         console.log(
-            chalk.gray('—————————————————') +
-            chalk.white('[') + chalk.red('Błąd Database') + chalk.white(']') + 
-            chalk.gray('—————————————————')
+            chalk.grey('[') + chalk.redBright('DATABSE ERROR') + chalk.grey('] ')
         );
 
         // Display error in terminal
-        console.log(err);
+        console.log(
+            chalk.red(err)
+        );
         
         return;
-    } 
-    console.log(
-        chalk.gray('—————————————————') +
-        chalk.white('[') + chalk.red('Informacje Database') + chalk.white(']') + 
-        chalk.gray('—————————————————')
-    );
-    
+    };
+
     // Information about bot connection to the database and display of which database
-    console.log(chalk.gray('Połączono do bazy: '), chalk.red.underline.bold(process.env.dbDatabase));
+    console.log(
+        chalk.grey('[') + chalk.greenBright('DATABSE') + chalk.grey('] ') +
+        chalk.gray(`Connected to base: `) + chalk.red.underline.bold(process.env.dbDatabase)
+    );
+
 });
 
 module.exports = {
     dbConnect: () => {
         return conn;
     }
-}
+};
 
 /**
  * 

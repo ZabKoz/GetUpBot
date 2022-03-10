@@ -1,6 +1,5 @@
 // ———————————————[Packages]———————————————
 require('dotenv').config();
-const Discord = require('discord.js');
 const { Client, Collection } = require('discord.js');
 const chalk = require('chalk');
 const emoji = require('./config/emoji.json');
@@ -22,20 +21,20 @@ require('./handlers/dbConnection'); // Handlers responsible for loading database
 require('./handlers/musicFunction'); // Handlers responsible for loading music functions
 
 // ———————————————[Code]———————————————
+
 // Retrieving client token from .env file
 const token = process.env.clientToken;
 
 // Checking if the variable "token" is empty
-if (token === '') {
+if (token === '') { 
+
     // Display error information in the console
     console.log(
-        chalk.gray('—————————————————') +
-        chalk.white('[') + chalk.red('AntiCrash') + chalk.white(']') + 
-        chalk.gray('—————————————————')
+        chalk.grey('[') + chalk.redBright('AntiCrash') + chalk.grey('] ') +
+        chalk.gray(`Go to file `) + chalk.red.bold('.env') +
+        chalk.gray(`and laws `) + chalk.red.bold('"clientToken": "YOUR_BOT_TOKEN"')
     );
-    console.log(
-        chalk.red('Przejdź do pliku .env i ustaw clientToken')
-    );
+
 } else {
     // Bot login
     client.login(token);
