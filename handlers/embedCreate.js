@@ -4,12 +4,12 @@ module.exports = {
         EmbedLevelingUp(message, member, conn, query2);
         // Finish later
     },
-    ErrorEmbed: async (client, message, err) => {
-        CreateErrorEmbed(client, message, err);
-        // Finish later
+    ErrorEmbed: async (client, message, err, ErrType) => {
+        CreateErrorEmbed(client, message, err, ErrType);
     },
     NSFWEmbed: async (client, message, err, ErrType) => {
         if (err) {
+
             /**
              * 
              * @INFO
@@ -105,13 +105,31 @@ function EmbedLevelingUp(message, member, conn, query2) {
     });
 };
 // Function for creating an embed with the error
-function CreateErrorEmbed(client, message, err) {
+function CreateErrorEmbed(client, message, err, ErrType) {
     // ———————————————[Packages]———————————————
     const { MessageEmbed } = require('discord.js');
+    const chalk = require('chalk');
+
+    if (ErrType === "WatchYT") { // Error in command watchyt
+        let Embed = new MessageEmbed()
+            .setTitle(`${client.emotes.circleno}| Wystąpił błąd!`)
+            .setColor(client.colores.embedError)
+            .setTimestamp()
+            .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
+        message.channel.send({ embeds: [Embed] })
+
+        console.log(
+            chalk.grey('[') + chalk.redBright('COMMAND WATCHYT ERROR') + chalk.grey('] ')
+        );
+
+        console.log(err);
+    }
 
     let NoNsfw_embed = new MessageEmbed()
         .setColor(client.colores.embedError)
         .setTitle(`${client.emotes.circleno}| Wystąpił błąd!`)
+        .setTimestamp()
+        .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
     message.channel.send({ embeds: [NoNsfw_embed] })
     console.log(err);
 };
@@ -138,6 +156,7 @@ function CENE(client, message) {
 function CENHE(client, message, err) {
     // ———————————————[Packages]———————————————
     const { MessageEmbed } = require('discord.js');
+    const chalk = require('chalk');
 
     let NoNsfw_embed = new MessageEmbed()
         .setColor(client.colores.embedError)
@@ -148,6 +167,11 @@ function CENHE(client, message, err) {
         .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
 
     message.channel.send({ embeds: [NoNsfw_embed], files: ['./assets/images/error/404_h.gif'] });
+
+    console.log(
+        chalk.grey('[') + chalk.redBright('COMMAND HENTAI +18 ERROR') + chalk.grey('] ')
+    );
+
     console.log(err);
 };
 
@@ -155,6 +179,7 @@ function CENHE(client, message, err) {
 function CENNE(client, message, err) {
     // ———————————————[Packages]———————————————
     const { MessageEmbed } = require('discord.js');
+    const chalk = require('chalk');
 
     let NoNsfw_embed = new MessageEmbed()
         .setColor(client.colores.embedError)
@@ -165,6 +190,11 @@ function CENNE(client, message, err) {
         .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
 
     message.channel.send({ embeds: [NoNsfw_embed], files: ['./assets/images/error/404.png'] });
+
+    console.log(
+        chalk.grey('[') + chalk.redBright('COMMAND NORMAL +18 ERROR') + chalk.grey('] ')
+    );
+    
     console.log(err);
 };
 
