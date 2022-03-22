@@ -1,12 +1,13 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
 require('../../handlers/musicFunction');
+const i18n = require('../../handlers/i18n');
 const client = require('../../bot');
 
 module.exports = {
     name: "Skip",
     aliases: ["skip"],
-    description: "Pomiń muzykę",
+    description: i18n.__("skip.description"),
     usage: "",
     cooldowns: 2000,
     premiumOnly: false,

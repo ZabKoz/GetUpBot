@@ -1,13 +1,14 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
 require('../../handlers/musicFunction');
+const i18n = require('../../handlers/i18n');
 const client = require('../../bot');
 
 module.exports = {
     name: "Play",
     aliases: ["p", "play"],
-    description: "Odtwarzanie muzyki na kanale",
-    usage: "<link>",
+    description: i18n.__("play.description"),
+    usage: i18n.__("play.usage"),
     cooldowns: 2000,
     premiumOnly: false,
     inVoiceChannel: true,

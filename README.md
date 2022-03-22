@@ -25,7 +25,7 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 |	Categories	| Commands
 |---------------|-----------------|
 | Fun	|	`meme`	|
-| Info	|	`about`, `help`, `ping`, `uptime`, `cmdhelp`	|
+| Info	|	`botinfo`, `help`, `ping`, `uptime`, `cmdhelp`	|
 | Music	|	`Play`, `Pause`, `Queue`, `Skip`, `Join` and **3** more!	|
 | Nsfw	|	`FunnyNsfw`, `Hanal`, `Hass`, `BigBoobs`, `HotMom` and **74** more!	|
 | User	|	`Avatar` |
@@ -52,6 +52,9 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 | [distube](https://www.npmjs.com/package/distube)	                        |	`3.3.2`	| [opusscript](https://www.npmjs.com/package/opusscript)	               |	`0.0.8`	|
 | [dotenv](https://www.npmjs.com/package/dotenv)	                          |	`16.0.0`| [util](https://www.npmjs.com/package/util)	                           |	`0.12.4`|
 | [ffmpeg-static](https://www.npmjs.com/package/ffmpeg-static)	            |	`0.7.9`	| [libsodium-wrappers](https://www.npmjs.com/package/libsodium-wrappers) |	`0.7.9`|
+| [@distube/ytdl-core](https://www.npmjs.com/package/@distube/ytdl-core)	            |	`4.11.1`	| [i18n](https://www.npmjs.com/package/i18n) |	`0.14.2`|
+| [moment](https://www.npmjs.com/package/moment)	            |	`2.29.1`	| [moment-duration-format](https://www.npmjs.com/package/moment-duration-format) |	`2.3.2`|
+| [os](https://www.npmjs.com/package/os)	            |	`0.1.2`	| [systeminformation]https://www.npmjs.com/package/systeminformation) |	`5.11.8`|
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

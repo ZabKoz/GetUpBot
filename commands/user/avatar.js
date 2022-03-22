@@ -1,13 +1,14 @@
 const { MessageEmbed } = require('discord.js');
 const client = require('../../bot');
 const embedCreate = require('../../handlers/embedCreate');
+const i18n = require('../../handlers/i18n');
 
 module.exports = {
     name: "Avatar",
     aliases: ["avatar"],
     cooldowns: 3000,
-    description: "Pokazuje avatar",
-    usage: "",
+    description: i18n.__("avatar.description"),
+    usage: "[@user]",
     toggleOff: false,
     developersOnly: false,
     premiumOnly: false,

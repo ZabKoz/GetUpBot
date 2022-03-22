@@ -44,3 +44,12 @@ manager.on('shardCreate', (shard) => {
 });
 
 manager.spawn();
+
+/**
+ * 
+ * @INFO
+ * Bot Coded by ZabKoz#2744
+ * @INFO
+ * Please mention me when you use this code!
+ *
+ */

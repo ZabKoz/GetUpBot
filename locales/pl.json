@@ -1,0 +1,237 @@
+{
+    "Ready": {
+        "login": "Zalogowano jako: ",
+
+        "servers": "Wszystkie serwery: ",
+        "infoServers": " serwery.",
+        "infoServer": " serwer.",
+        
+        "WatchingOver": "Czuwam nad: ",
+        "infoUsers": " użytkownikami.",
+        "infoUser": " użytkownikiem.",
+        
+        "IHave": "Mam: ",
+        "Commands": " komend.",
+        
+        "BasicPrefix": "Podstawowy prefix: ",
+        
+        "NeedHelp": "Nadal potrzebujesz pomocy? Skontaktuj się ze mną:\n"
+    },
+
+    "GuildCreate": {
+        "NewServer": "Dodano nowy serwer: "
+    },
+
+    "messageCreate": {
+        "OnlyPrefix": "| Nasze komendy znajdziesz pod: ",
+        
+        "nocmd_Title": "| Nie znaleziono komendy!",
+        "nocmd_Desc1": "Spróbuj użyć ",
+        "nocmd_Desc2": "aby znaleść odpowiednią komendę",
+        
+        "toggleoff_Title": "| Coś poszło nie tak!",
+        "toggleoff_Desc": "Ta komenda została wyłączona przez developerów.",
+        
+        "botperms_Title": "| Coś poszło nie tak!",
+        "botperms_Desc": "Nie mam uprawnień do używania tego polecenia!",
+        
+        "developersOnly_Title": "| Coś poszło nie tak!",
+        "developersOnly_Desc": "Tylko programiści mogą używać tego polecenia!",
+        
+        "cooldown_Title": "| Wolniej... Gdzie ci tak śpieszno?",
+        "cooldown_Desc1": "Musisz odczekać",
+        "cooldown_Desc2": "Aby użyć komendy",
+        "cooldown_Desc3": "ponownie!",
+
+        "voicechannel_Title": "| Coś poszło nie tak!",
+        "voicechannel_Desc": "Musisz być na kanale głosowym aby użyc komendy",
+
+        "premium_Title": "| Coś poszło nie tak!",
+        "premium_Desc" : "Tylko servery premium moą używać tego polecenia!"
+    },
+
+    "addPlayList": {
+        "Title": "Dodano playlistę: ",
+        "Desc1": "Muzyki dodane",
+        "Desc2": "Czas",
+        "Desc3": "Prośba"
+    },
+
+    "addSong": {
+        "Title": "Dodano muzykę: ",
+        "Desc1": "Czas",
+        "Desc2": "Prośba"
+    },
+
+    "disconnect": {
+        "Title": "**Opuszczam** kanał głosowy",
+        "Desc1": "🤩| Mamy nadzieje że bot cię nie zawiódł w puszczaniu muzyki."
+    },
+
+    "emptySong": {
+        "Title": "**Opuszczam** kanał głosowy ",
+        "Desc1": "🤩| Mamy nadzieje że bot cię nie zawiódł w puszczaniu muzyki.",
+        "Field1": ""
+    },
+
+    "dbConnection": {
+        "status": "Połączono do bazy: "
+    },
+
+    "EmbedCreate": {
+        "WatchYT_Title": "Wystąpił błąd",
+
+        "noNsfwCH": "Ta komenda jest dozwolona tylko na kanałach NSFW"
+    },
+
+    "meme": {
+        "description": "Polskie memy z redita"
+    },
+
+    "botinfo": {
+        "description": "Informacje o bocie",
+
+        "General": "Podstawowe informacje",
+        "username": "Nick",
+        "tag": "Tag",
+        "id": "ID",
+        "owner": "Właścicel",
+        "createdAt": "Stworzony",
+
+        "Stats": "Statystyki",
+        "servers": "Serwery",
+        "channels": "Kanały",
+        "users": "Użytkownicy",
+        "commands": "Komendy",
+        
+        "Version": "Wersje",
+        
+        "System": "System",
+        "Platfrom": "System",
+        "Uptime": "Czas dziłania",
+        "CPU": "Procesor",
+        "Cores": "Rdzenie",
+        "Model": "Model",
+        "Speed": "Szybkość",
+        "MEMORY": "Pamięć",
+        "TotalMemory": "Pamięć całkowita",
+        "FreeMemory": "Pamięć swobodna",
+        "HeapTotal": "Pamięć bota",
+        "HeapUsage": "Pamięć używana",
+
+        "prev": "⬅",
+        "next": "➡",
+        "pages": "Strony"
+    },
+
+    "cmdhelp": {
+        "description": "Informacje o komendzie",
+        "usage": "<nazwa-komendy>",
+        "noargs": "Proszę podać nazwę polecenia",
+        "nameMissing": "| Brak nazwy polecenia!",
+        "progress": "W toku",
+        "descMissing": "Brak opisu polecenia!",
+        "notFound": "| Nie znaleziono polecenia!",
+        "notFoundDesc": "Nie znaleziono polecenia sprawdź czy takie istnieje",
+        "Info": "Szczegóły polecenia:",
+
+        "Info2": "Komenda:",
+        "Info3": "Brak nazwy dla tego polecenia",
+        
+        "Info4": "Aliasy:",
+        "Info5": "Brak aliasów dla tego polecenia.",
+        
+        "Info6": "Spowolnienia:",
+        "Info7": "Brak",
+        
+        "Info8": "Opis:",
+        "Info9": "Brak opisu dla tego polecenia.",
+        
+        "Info10": "Użycie:",
+        
+        "Info11": "Premium:",
+        "Info12": "Tak",
+        "Info13": "Nie",
+
+        "Info14": "Status komendy:",
+        "Info15": "Offline",
+        "Info16": "Online",
+
+        "Info17": "Tylko dla developerów:",
+        "Info18": "Tak",
+        "Info19": "Nie",
+
+        "Info20": "Wymagane uprawnienia bota:",
+        "Info21": "Brak",
+
+        "Info22": "Wymagane uprawnienia użytkownika:",
+        "Info23": "Brak"
+    },
+
+    "help": {
+        "description": "Wyświetla listę wszystkich komend",
+        "nameMissing": "Brak nazwy polecenia!",
+        "descMissing": "Brak opisu polecenia!",
+        "Title": "{clientName} || Komendy",
+        "Desc": "Proszę wybrać jedną z opcji z poniższej listy!",
+        "Placeholder": "Proszę wybrać kategorię!",
+        "Desc2": "Komendy z kategori"
+    },
+
+    "ping": {
+        "description": "Pokazuje średni ping bot'a",
+        "check": "| Sprawdzanie średniego pingu bot'a",
+        "resultTitle": "| Uwaga! Wynik może cię zaskoczyć.",
+        "result": "📈 Średni ping do API: {ping} ms"
+    },
+
+    "uptime": {
+        "description": "Sprawdź czas online bot'a",
+        "check": "| Sprawdzanie ile bot aktualnie działa...",
+        "resultTitle": "| Uwaga! Wynik może cię zaskoczyć.",
+        "result": "Czas online: `{days} dni, {hours} godzin, {minutes} minut, {seconds} sekund`"
+    },
+
+    "join": {
+        "description": "Bot dołącza do twojego kanału głosowego"
+    },
+
+    "leave": {
+        "description": "Bot opuszcza kanał głosowy"
+    },
+
+    "pause": {
+        "description": "Zatrzymaj aktualnie odtwarzaną muzykę"
+    },
+
+    "play": {
+        "description": "Odtwarza utwory z Youtube, Soundcloud lub Spotifly",
+        "usage": "<link>"   
+    },
+
+    "queue": {
+        "description": "Wyświetla aktualną kolejkę utworów, oraz właśnie odtwarzany."   
+    },
+
+    "resume": {
+        "description": "Wznów odtwarzanie muzyki"
+    },
+
+    "skip": {
+        "description": "Przewiń aktualnie odtwarzany utwór"   
+    },
+
+    "valume": {
+        "description": "Zmień głośność odtwarzania utworu",
+        "usage": "<0-100>"   
+    },
+
+    "avatar": {
+        "description": "Wyświetl avatar użytkownika"
+    },
+
+    "watchYt": {
+        "description": "Oglądajcie razem filmów z YouTube na Discordzie"
+    }
+    
+}

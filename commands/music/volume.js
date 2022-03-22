@@ -1,13 +1,14 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
 require('../../handlers/musicFunction');
+const i18n = require('../../handlers/i18n');
 const client = require('../../bot');
 
 module.exports = {
     name: "Volume",
     aliases: ["volume", "v"],
-    description: "Bot dołącza do kanału",
-    usage: "",
+    description: i18n.__("valume.description"),
+    usage: i18n.__("valume.usage"),
     cooldowns: 2000,
     premiumOnly: false,
     inVoiceChannel: true,

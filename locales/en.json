@@ -1,0 +1,237 @@
+{
+    "Ready": {
+        "login": "Logged in as: ",
+
+        "servers": "All servers: ",
+        "infoServers": " servers.",
+        "infoServer": " server.",
+        
+        "WatchingOver": "I'm watching over: ",
+        "infoUsers": " users.",
+        "infoUser": " user.",
+        
+        "IHave": "I have: ",
+        "Commands": " commands.",
+        
+        "BasicPrefix": "Basic prefix: ",
+        
+        "NeedHelp": "Still need help? Contact me:\n"
+    },
+
+    "GuildCreate": {
+        "NewServer": "Added new server: "
+    },
+
+    "messageCreate": {
+        "OnlyPrefix": "| You can find our commands under: ",
+        
+        "nocmd_Title": "| Command not found!",
+        "nocmd_Desc1": "Try using ",
+        "nocmd_Desc2": "to find the appropriate command",
+        
+        "toggleoff_Title": "| Something went wrong!",
+        "toggleoff_Desc": "This command has been disabled by the developers.",
+        
+        "botperms_Title": "| Something went wrong!",
+        "botperms_Desc": "I do not have permission to use this command!",
+        
+        "developersOnly_Title": "| Something went wrong!",
+        "developersOnly_Desc": "Only programmers can use this command!",
+        
+        "cooldown_Title": "| Slow down... Where are you in such a hurry?",
+        "cooldown_Desc1": "You have to wait",
+        "cooldown_Desc2": "To use the command",
+        "cooldown_Desc3": "again!",
+
+        "voicechannel_Title": "| Something went wrong!",
+        "voicechannel_Desc": "You must be on a voice channel to use the command",
+
+        "premium_Title": "| Something went wrong!",
+        "premium_Desc" : "Only premium servers can use this command!"
+    },
+
+    "addPlayList": {
+        "Title": "Added playlist: ",
+        "Desc1": "Music added",
+        "Desc2": "Time",
+        "Desc3": "Requested"
+    },
+
+    "addSong": {
+        "Title": "Music added: ",
+        "Desc1": "Time",
+        "Desc2": "Requested"
+    },
+
+    "disconnect": {
+        "Title": "**I'm leaving** the voice channel",
+        "Desc1": "🤩| We hope the bot didn't let you down in playing music."
+    },
+
+    "emptySong": {
+        "Title": "**I'm leaving** the voice channel",
+        "Desc1": "🤩| We hope the bot didn't let you down in playing music.",
+        "Field1": ""
+    },
+
+    "dbConnection": {
+        "status": "Connected to base: "
+    },
+
+    "EmbedCreate": {
+        "WatchYT_Title": "An error has occurred",
+
+        "noNsfwCH": "This command is only allowed on NSFW channels"
+    },
+
+    "meme": {
+        "description": "Polish reddit memes"
+    },
+
+    "botinfo": {
+        "description": "About the bot",
+
+        "General": "Basic information",
+        "username": "Nick",
+        "tag": "Tag",
+        "id": "ID",
+        "owner": "Owner",
+        "createdAt": "Created",
+
+        "Stats": "Statistics",
+        "servers": "Servers",
+        "channels": "Kanały",
+        "users": "Channels",
+        "commands": "Commands",
+        
+        "Version": "Versions",
+        
+        "System": "System",
+        "Platfrom": "System",
+        "Uptime": "Operating time",
+        "CPU": "Processor",
+        "Cores": "Cores",
+        "Model": "Model",
+        "Speed": "Speed",
+        "MEMORY": "Memory",
+        "TotalMemory": "Total memory",
+        "FreeMemory": "Free memory",
+        "HeapTotal": "Total heap",
+        "HeapUsage": "Usage heap",
+
+        "prev": "⬅",
+        "next": "➡",
+        "pages": "Pages"
+    },
+
+    "cmdhelp": {
+        "description": "Information about the command",
+        "usage": "<command-name>",
+        "noargs": "Please enter the command name",
+        "nameMissing": "| No command name!",
+        "progress": "In progress",
+        "descMissing": "No command description!",
+        "notFound": "| Command not found!",
+        "notFoundDesc": "Command not found, check if it exists",
+        "Info": "Command Details:",
+
+        "Info2": "Command:",
+        "Info3": "No name for this command",
+        
+        "Info4": "Aliases:",
+        "Info5": "No aliases for this command.",
+        
+        "Info6": "Cooldown:",
+        "Info7": "None",
+        
+        "Info8": "Description:",
+        "Info9": "No description available for this command.",
+        
+        "Info10": "Usage:",
+        
+        "Info11": "Premium:",
+        "Info12": "Yes",
+        "Info13": "No",
+
+        "Info14": "Command status:",
+        "Info15": "Offline",
+        "Info16": "Online",
+
+        "Info17": "For developers only:",
+        "Info18": "Yes",
+        "Info19": "No",
+
+        "Info20": "Required bot permissions:",
+        "Info21": "None",
+
+        "Info22": "Required user permissions:",
+        "Info23": "None"
+    },
+
+    "help": {
+        "description": "Displays a list of all commands",
+        "nameMissing": "Command name missing!",
+        "descMissing": "Command description missing!",
+        "Title": "{clientName} || Commands",
+        "Desc": "Please select one of the options from the list below!",
+        "Placeholder": "Please select a category!",
+        "Desc2": "Commands in categories"
+    },
+
+    "ping": {
+        "description": "Shows the average ping of the bot",
+        "check": "| Checking the average ping of a bot",
+        "resultTitle": "| The result may surprise you.",
+        "result": "📈 Average ping to API: {ping} ms"
+    },
+
+    "uptime": {
+        "description": "Check the bot's online time",
+        "check": "| Checking how many bots are currently running...",
+        "resultTitle": "| The result may surprise you.",
+        "result": "Online time: `{days} days, {hours} hours, {minutes} minutes, {seconds} seconds`"
+    },
+
+    "join": {
+        "description": "Bot joins your voice channel."
+    },
+
+    "leave": {
+        "description": "The bot is leaving the voice channel."
+    },
+
+    "pause": {
+        "description": "Stop the music that is currently playing."
+    },
+
+    "play": {
+        "description": "Plays songs from Youtube, Soundcloud or Spotifly.",
+        "usage": "<link>"   
+    },
+
+    "queue": {
+        "description": "Displays the current track queue, and the track currently playing."   
+    },
+
+    "resume": {
+        "description": "Resume music playback."
+    },
+
+    "skip": {
+        "description": "Scroll through the currently playing song."   
+    },
+
+    "valume": {
+        "description": "Change the playback volume of a song",
+        "usage": "<0-100>"   
+    },
+
+    "avatar": {
+        "description": "Display user avatar"
+    },
+
+    "watchYt": {
+        "description": "Watch YouTube videos together on Discord"
+    }
+    
+}

@@ -15,3 +15,12 @@ module.exports = {
       // Command code
    },
 };
+
+/**
+ * 
+ * @INFO
+ * Bot Coded by ZabKoz#2744
+ * @INFO
+ * Please mention me when you use this code!
+ *
+ */

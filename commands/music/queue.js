@@ -1,12 +1,13 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
 require('../../handlers/musicFunction');
+const i18n = require('../../handlers/i18n');
 const client = require('../../bot');
 
 module.exports = {
     name: "Queue",
     aliases: ["list", "queue"],
-    description: "Lista muzyk",
+    description: i18n.__("queue.description"),
     usage: "",
     cooldowns: 2000,
     premiumOnly: false,

@@ -4,28 +4,28 @@
 ## 😂| Fun
 |	Command	| Description	| Usage
 |---------------|--------------------|--------------|
-| meme	|	Sends a random meme.	|	`meme`	|
+| Meme	|	Sends a random meme.	|	`meme`	|
 
 ## ℹ| Info
 |	Command	| Description	| Usage
 |---------------|--------------------|--------------|
-| about	|	Bot information.	|	`about`	|
-| cmdhelp	|	Information about the command.	|	`cmdhelp <command-name>`	|
-| help	|	List of commands.	|	`help`	|
-| ping	|	Ping bot.	|	`ping`	|
-| uptime	|	Bot runtime.	|	`uptime`	|
+| Botinfo	|	Bot information.	|	`botinfo`	|
+| Cmdhelp	|	Information about the command.	|	`cmdhelp <command-name>`	|
+| Help	|	Displays a list of all commands.	|	`help`	|
+| Ping	|	Shows the average ping of the bot.	|	`ping`	|
+| Uptime	|	Check the bot's online time.	|	`uptime`	|
 
 ## 🎶| Music
 |	Command	| Description	| Usage
 |---------------|--------------------|--------------|
-| Join	|	Bot joins vc.	|	`join`	|
-| Leave	|	Bot exits the vc.	|	`leave`	|
-| Pause	|	Pause the queue.	|	`pause`	|
-| Play	|	Play a song in the vc.	|	`play <link>`	|
-| Queue	|	Gives you info about the server queue.	|	`queue`	|
-| Resume	|	Resume the song that was paused.	|	`resume`	|
-| Skip	|	Skip the song that its playing.	|	`skip`	|
-| Volume	|	volume setting.	|	`volume <0-100>`	|
+| Join	|	Bot joins your vc.	|	`join`	|
+| Leave	|	The bot is leaving the vc.	|	`leave`	|
+| Pause	|	Stop the music that is currently playing..	|	`pause`	|
+| Play	|	Plays songs from Youtube, Soundcloud or Spotifly..	|	`play <link>`	|
+| Queue	|	Displays the current track queue, and the track currently playing.	|	`queue`	|
+| Resume	|	Resume music playback.	|	`resume`	|
+| Skip	|	Scroll through the currently playing song.	|	`skip`	|
+| Volume	|	Change the playback volume of a song.	|	`volume <0-100>`	|
 ## 🔞| NSFW
 |	Command	| Description	| Usage
 |---------------|--------------------|--------------|
@@ -112,10 +112,10 @@
 ## 👦| User
 |	Command	| Description	| Usage
 |---------------|--------------------|--------------|
-| Avatar	|	Uploading a user avatar to a channel.	|	`avatar [@user]`	|
+| Avatar	|	Display user avatar.	|	`avatar [@user]`	|
 
 ## 🎞| Watch
 |	Command	| Description	| Usage
 |---------------|--------------------|--------------|
-| Watchyt	|	Watching Youtube via together.	|	`watchyt`	|
+| Watchyt	|	Watch YouTube videos together on Discord.	|	`watchyt`	|
 

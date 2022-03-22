@@ -2,10 +2,10 @@
 const { MessageEmbed } = require('discord.js');
 const client = require('../../bot');
 const ms = require('ms');
+const i18n = require('../../handlers/i18n');
 const { dbConnect } = require('../../handlers/dbConnection');
-const { embedError, embedInfo, } = require('../../config/color.json');
-const { circleno, info, } = require('../../config/emoji.json');
 const messageFunction = require('../../handlers/messageFunction');
+
 
 // ———————————————[Variables]———————————————
 let conn;
@@ -22,7 +22,10 @@ client.on('messageCreate', async (message) => {
         
         // If there is an error display it
         if (err1) {
-            console.log(`Error #1 MessageCreate`);
+            console.log(
+                chalk.grey('[') + chalk.redBright('ERROR') + chalk.grey('] ') +
+                chalk.gray(`Error #1 MessageCreate `)
+            );
             console.log(err1);
             return;
         }
@@ -37,10 +40,22 @@ client.on('messageCreate', async (message) => {
                 
                 // If there is an error display it
                 if (err2) {
-                    console.log(`Error #2 MessageCreate`);
+                    console.log(
+                        chalk.grey('[') + chalk.redBright('ERROR') + chalk.grey('] ') +
+                        chalk.gray(`Error #2 MessageCreate `)
+                    );
                     console.log(err2);
                     return;
                 };
+
+                if (err3) {
+                    console.log(
+                        chalk.grey('[') + chalk.redBright('ERROR') + chalk.grey('] ') +
+                        chalk.gray(`Error #1 MessageCreate `)
+                    );
+                    console.log(err3);
+                    return;
+                }
                     
                 // If the query result is greater than 0
                 if (res2.length > 0) {
@@ -58,10 +73,11 @@ client.on('messageCreate', async (message) => {
                     
                 // Send information if user only sent prefix
                 let noargs_embed = new MessageEmbed()
-                    .setTitle(`${info}| Nasze komendy znajdziesz pod \`${prefix}help\``)
-                    .setColor(embedInfo)
-                    .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                    .setThumbnail()
+                    .setColor(client.colores.embedInfo)
+                    .setTitle(client.emotes.info + i18n.__mf("messageCreate.OnlyPrefix") + ` \`${prefix}help\``)
+                    .setTimestamp()
+                    .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
+                
                 if (cmd.length === 0) {
                     message.channel.send({ embeds: [noargs_embed] })
                     .then(msg => {
@@ -77,11 +93,12 @@ client.on('messageCreate', async (message) => {
                 
                 // Send information if the user did not enter a command
                 let nocmd_embed = new MessageEmbed()
-                    .setTitle(`${circleno}| Nie znaleziono komendy!`)
-                    .setDescription(`Spróbuj użyć \`${prefix}help\` aby znaleść odpowiednią komendę`)
-                    .setColor(embedError)
-                    .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                    .setThumbnail()
+                    .setColor(client.colores.embedError)
+                    .setTitle(client.emotes.boxno + i18n.__mf("messageCreate.nocmd_Title"))
+                    .setDescription(i18n.__mf("messageCreate.nocmd_Desc1") + ` \`${prefix}help\`` + i18n.__mf("messageCreate.nocmd_Desc2"))
+                    .setTimestamp()
+                    .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
+                
                 if (!command) return message.channel.send({ embeds: [nocmd_embed] })
                 .then(msg => {
                     setTimeout(() => msg.delete(), 10000);
@@ -92,11 +109,11 @@ client.on('messageCreate', async (message) => {
 
                     // Send information if the command has been deactivated
                     let toggleoff_embed = new MessageEmbed()
-                        .setTitle(`${circleno}| Ups!`)
-                        .setDescription(`Ta komenda została wyłączona przez developerów.`)
-                        .setColor(embedError)
-                        .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                        .setThumbnail()
+                        .setColor(client.colores.embedError)
+                        .setTitle(client.emotes.boxno + i18n.__mf("messageCreate.toggleoff_Title"))
+                        .setDescription(i18n.__mf("messageCreate.toggleoff_Desc"))
+                        .setTimestamp()
+                        .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
 
                     message.channel.send({ embeds: [toggleoff_embed] }).then(msg => {
                         setTimeout(() => msg.delete(), 10000);
@@ -108,10 +125,11 @@ client.on('messageCreate', async (message) => {
 
                     // Send information that the bot does not have permissions to execute this
                     let botperms_embed = new MessageEmbed()
-                        .setTitle(`${circleno}| Nie mam uprawnień do używania tego polecenia!`)
-                        .setColor(embedError)
-                        .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                        .setThumbnail()
+                        .setColor(client.colores.embedError)
+                        .setTitle(client.emotes.boxno + i18n.__mf("messageCreate.botperms_Title"))
+                        .setDescription(i18n.__mf("messageCreate.botperms_Desc"))
+                        .setTimestamp()
+                        .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
 
                     message.channel.send({ embeds: [botperms_embed] })
                     .then(msg => {
@@ -127,10 +145,11 @@ client.on('messageCreate', async (message) => {
 
                         // Send information that programmers can use this command
                         let developersOnly_embed = new MessageEmbed()
-                            .setTitle(`${circleno}| Tylko programiści mogą używać tego polecenia!`)
-                            .setColor(embedError)
-                            .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                            .setThumbnail()
+                            .setColor(client.colores.embedError)
+                            .setTitle(client.emotes.boxno + i18n.__mf("messageCreate.developersOnly_Title"))
+                            .setDescription(i18n.__mf("messageCreate.developersOnly_Desc"))
+                            .setTimestamp()
+                            .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
 
                         message.channel.send({ embeds: [developersOnly_embed] })
                         .then(msg => {
@@ -147,18 +166,17 @@ client.on('messageCreate', async (message) => {
 
                         // Send information that you must wait before using this command
                         let cooldown_embed = new MessageEmbed()
-                            .setTitle(
-                                `${circleno}| Wolniej... Gdzie ci tak śpieszno?`)
+                            .setColor(client.colores.embedError)
+                            .setTitle(client.emotes.boxno + i18n.__mf("messageCreate.cooldown_Title"))
                             .setDescription(
-                                `Musisz odczekać \`${ms(
-                                    client.cooldowns.get(`${command.name}${message.author.id}`) -
-                                       Date.now(),
-                                    { long: true }
-                                 )}\` Aby użyć komendy \`${command.name}\` ponownie!`
+                                `${i18n.__mf("messageCreate.cooldown_Desc1")} \`${ms(
+                                        client.cooldowns.get(`${command.name}${message.author.id}`) -
+                                        Date.now(),
+                                        { long: true }
+                                    )}\` ${i18n.__mf("messageCreate.cooldown_Desc2")} \`${command.name}\` ${i18n.__mf("messageCreate.cooldown_Desc3")}`
                             )
-                            .setColor(embedError)
-                            .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
-                            .setThumbnail()
+                            .setTimestamp()
+                            .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
 
                         message.channel.send({ embeds: [cooldown_embed] })
                         .then(msg => {
@@ -176,10 +194,12 @@ client.on('messageCreate', async (message) => {
                         
                         //Send information that you must be on a voice channel to use this command
                         let no_channel = new MessageEmbed()
-                            .setColor(embedError)
-                            .setTitle(`${circleno}| Musisz być na kanale głosowym!`)
+                            .setColor(client.colores.embedError)
+                            .setTitle(client.emotes.boxno + i18n.__mf("messageCreate.voicechannel_Title"))
+                            .setDescription(i18n.__mf("messageCreate.voicechannel_Desc") + `\`${command.name}\`` + '!')
                             .setTimestamp()
                             .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
+                        
                         message.channel.send({ embeds: [no_channel] }).then(msg => {
                             setTimeout(() => msg.delete(), 10000)
                         });
@@ -196,9 +216,11 @@ client.on('messageCreate', async (message) => {
                         // If the server has the setting "premium = false" display the information
                         
                         let premiumOnly_embed = new MessageEmbed()
-                            .setTitle(`${circleno}| Tylko servery premium mogą używać tego polecenia!`)
-                            .setColor(embedError)
-                            .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` })
+                            .setColor(client.colores.embedError)
+                            .setTitle(client.emotes.boxno + i18n.__mf("messageCreate.premium_Title"))
+                            .setDescription(i18n.__mf("messageCreate.premium_Desc"))
+                            .setTimestamp()
+                            .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
                         
                         if (command) return message.channel.send({ embeds: [premiumOnly_embed] })
                         .then(msg => {

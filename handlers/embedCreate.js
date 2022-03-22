@@ -109,39 +109,33 @@ function CreateErrorEmbed(client, message, err, ErrType) {
     // ———————————————[Packages]———————————————
     const { MessageEmbed } = require('discord.js');
     const chalk = require('chalk');
+    const i18n = require('./i18n');
 
     if (ErrType === "WatchYT") { // Error in command watchyt
         let Embed = new MessageEmbed()
-            .setTitle(`${client.emotes.circleno}| Wystąpił błąd!`)
             .setColor(client.colores.embedError)
+            .setTitle(client.emotes.boxno + i18n.__mf("EmbedCreate.WatchYT_Title"))
             .setTimestamp()
             .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
+        
         message.channel.send({ embeds: [Embed] })
-
-        console.log(
-            chalk.grey('[') + chalk.redBright('COMMAND WATCHYT ERROR') + chalk.grey('] ')
-        );
-
+        
+        //
+        console.log(chalk.grey('[') + chalk.redBright('COMMAND WATCHYT ERROR') + chalk.grey('] '));
+        //
         console.log(err);
     }
-
-    let NoNsfw_embed = new MessageEmbed()
-        .setColor(client.colores.embedError)
-        .setTitle(`${client.emotes.circleno}| Wystąpił błąd!`)
-        .setTimestamp()
-        .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
-    message.channel.send({ embeds: [NoNsfw_embed] })
-    console.log(err);
 };
 
 // Function for creating an embed with the error "wrong channel"
 function CENE(client, message) {
     // ———————————————[Packages]———————————————
     const { MessageEmbed } = require('discord.js');
+    const i18n = require('./i18n');
 
     let noNsfw_embed = new MessageEmbed()
         .setColor(client.colores.embedError)
-        .setTitle(`${client.emotes.circleno} | Ta komenda jest dozwolona tylko na kanałach \`NSFW\``)
+        .setTitle(client.emotes.boxno + i18n.__mf("EmbedCreate.noNsfwCH"))
         .setImage('https://media2.giphy.com/media/ToMjGpx9F5ktZw8qPUQ/giphy-downsized-large.gif')
         .setTimestamp()
         .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
@@ -157,6 +151,7 @@ function CENHE(client, message, err) {
     // ———————————————[Packages]———————————————
     const { MessageEmbed } = require('discord.js');
     const chalk = require('chalk');
+    const i18n = require('./i18n');
 
     let NoNsfw_embed = new MessageEmbed()
         .setColor(client.colores.embedError)
@@ -180,6 +175,7 @@ function CENNE(client, message, err) {
     // ———————————————[Packages]———————————————
     const { MessageEmbed } = require('discord.js');
     const chalk = require('chalk');
+    const i18n = require('./i18n');
 
     let NoNsfw_embed = new MessageEmbed()
         .setColor(client.colores.embedError)

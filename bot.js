@@ -15,6 +15,7 @@ client.colores = color;
 client.commands = new Collection(); // Commands collection
 client.aliases = new Collection(); // Commands aliases collection
 client.cooldowns = new Collection(); // Commands cooldowns collection
+client.slashCommands = new Collection(); // Slash commands collection
 require('./handlers/commands')(client); // Handlers responsible for loading commands
 require('./handlers/events')(client); // Handlers responsible for loading events
 require('./handlers/dbConnection'); // Handlers responsible for loading database connection

@@ -1,23 +1,33 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed } = require("discord.js");
+const i18n = require('../../handlers/i18n');
 const client = require('../../bot');
-const { embedRandom } = require('../../config/color.json');
-const { YoutubemMusic, RB_Views, animatedBubble, Time } = require('../../config/emoji.json');
 
 // ———————————————[Event code]———————————————
-client.distube.on("addList", (queue, song) => {
+client.distube.on("addList", async (queue, playlist) => {
     
-    let addSong_embed = new MessageEmbed()
-        .setColor(embedRandom)
-        .setTitle(`Dodano muzykę do kolejki`)
-        .setThumbnail(song.thumbnail)
-        .setDescription(`${YoutubemMusic}| [\`${song.name}\`](${song.url})`)
-        .addField(`${RB_Views}| Wyświetlenia: `, `${song.views}`, true)
-        .addField(`${Time}| Czas: `, `${song.formattedDuration}`, true)
-        .addField(`${animatedBubble}| Proszone przez:`, `${song.user}`, false)
+    let Embed = new MessageEmbed()
+        .setColor(client.colores.embedRandom)
+        .setURL(playlist.url)
+        .setTitle(i18n.__mf("addPlayList.Title") + `\`${playlist.name}\``)
+        .setThumbnail(playlist.thumbnail)
+        .setDescription(
+            `
+            **• ${i18n.__("addPlayList.Desc1")}** : ${playlist.songs.length}
+            **• ${i18n.__("addPlayList.Desc2")}** : ${playlist.formattedDuration}
+            **• ${i18n.__("addPlayList.Desc3")}** : ${playlist.user}
+            `
+        )
         .setTimestamp()
-        .setFooter({ text: `${process.env.clientName}`, iconURL: `${process.env.clientAvatar}` });
-    queue.textChannel.send({ embeds: [addSong_embed] });
+        .setFooter(
+            { 
+                text: `${process.env.clientName}`,
+                iconURL: `${process.env.clientAvatar}` 
+            }
+        );
+
+    queue.textChannel.send({ embeds: [Embed] });
+
 });
 
 /**

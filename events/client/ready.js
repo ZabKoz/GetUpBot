@@ -1,6 +1,7 @@
 // ———————————————[Packages]———————————————
 const chalk = require('chalk');
 const client = require('../../bot');
+const i18n = require('../../handlers/i18n');
 
 // ———————————————[Event code]———————————————
 client.on('ready', async () => {
@@ -35,20 +36,20 @@ client.on('ready', async () => {
     // Information on which user is logged in
     console.log(
         chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
-        chalk.gray(`Logged in as: `) +
+        chalk.gray(i18n.__mf("Ready.login")) +
         chalk.red.underline.bold(client.user.tag)
     );
     
     // Information about the number of servers the bot is on
     console.log(
         chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
-        chalk.gray(`All Servers: `) +
+        chalk.gray(i18n.__mf("Ready.servers")) +
         chalk.red.underline.bold(`${client.guilds.cache.size}`) +
         chalk.gray.bold(
             `${
                 client.guilds.cache.size > 1
-                  ? " Servers."
-                  : " Server."
+                  ? i18n.__mf("Ready.infoServers")
+                  : i18n.__mf("Ready.infoServer")
             }`
         )
     );
@@ -56,13 +57,13 @@ client.on('ready', async () => {
     // Information on how many command bot has
     console.log(
         chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
-        chalk.gray(`Watching over: `) +
+        chalk.gray(i18n.__mf("Ready.WatchingOver")) +
         chalk.red.underline.bold(`${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)}`) +
         chalk.gray.bold(
             `${
                 client.guilds.cache.reduce((a, b) => a + b.memberCount, 0) > 1
-                  ? " Users."
-                  : " User."
+                  ? i18n.__mf("Ready.infoUsers")
+                  : i18n.__mf("Ready.infoUser")
             }`
         )
     );
@@ -70,14 +71,14 @@ client.on('ready', async () => {
     // Information on how many command bot has
     console.log(
         chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
-        chalk.gray(`I have: `) + chalk.red.underline.bold(`${client.commands.size}`) +
-        chalk.grey(` Commands.`)
+        chalk.gray(i18n.__mf("Ready.IHave")) + chalk.red.underline.bold(`${client.commands.size}`) +
+        chalk.grey(i18n.__mf("Ready.Commands"))
     );
 
     // Basic bot prefix information
     console.log(
         chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
-        chalk.gray(`Basic prefix: `) + chalk.red.bold(`${process.env.clientPrefix}`)
+        chalk.gray(i18n.__mf("Ready.BasicPrefix")) + chalk.red.bold(`${process.env.clientPrefix}`)
     );
     
     console.log('');
@@ -86,11 +87,11 @@ client.on('ready', async () => {
     // Contact information
     console.log(
         chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
-        chalk.gray(`Still Need Help? Contact Me:\n`) +
+        chalk.gray(i18n.__mf("Ready.NeedHelp")) +
         chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
         chalk.red.bold(`Discord: ZabKoz#2744\n`) +
         chalk.grey('[') + chalk.greenBright('INFO') + chalk.grey('] ') +
-        chalk.red.bold(`Discord Server: [In the future]`)
+        chalk.red.bold(`Discord Server: `)
     );
 
 });

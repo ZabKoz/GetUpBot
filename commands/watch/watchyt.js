@@ -2,12 +2,13 @@
 const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { DiscordTogether } = require('discord-together');
 const embedCreate = require('../../handlers/embedCreate');
+const i18n = require('../../handlers/i18n');
 const client = require('../../bot');
 
 module.exports = {
     name: "Watchyt",
     aliases: ["watchyt"],
-    description: "Oglądanie razem YouTube",
+    description: i18n.__mf("watchyt.description"),
     usage: "",
     cooldowns: 2000,
     premiumOnly: false,

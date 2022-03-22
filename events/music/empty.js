@@ -4,21 +4,19 @@ const i18n = require('../../handlers/i18n');
 const client = require('../../bot');
 
 // ———————————————[Event code]———————————————
-client.distube.on("addSong", (queue, song) => {
+client.distube.on("empty", async (client, queue) => {
     
-    let duration = song.duration * 1000;
-
     let Embed = new MessageEmbed()
         .setColor(client.colores.embedRandom)
-        .setURL(song.url)
-        .setTitle(i18n.__mf("addSong.Title") + `\`${song.name}\``)
-        .setThumbnail(song.thumbnail)
+        .setURL(playlist.url)
+        .setTitle(clien.emotes.info + i18n.__mf("emptySong.Title"))
+        .setThumbnail(playlist.thumbnail)
         .setDescription(
             `
-            **• ${i18n.__("addSong.Desc1")}** : ${song.formattedDuration}
-            **• ${i18n.__("addSong.Desc2")}** : ${song.user}
+            **• ${i18n.__("emptySong.Desc1")}** : ${playlist.songs.length}
             `
         )
+        .addField(`${i18n.__("emptySong.Desc1")}`, i18n.__("emptySong.Desc1"), true)
         .setTimestamp()
         .setFooter(
             { 
@@ -28,7 +26,7 @@ client.distube.on("addSong", (queue, song) => {
         );
 
     queue.textChannel.send({ embeds: [Embed] });
-    
+
 });
 
 /**

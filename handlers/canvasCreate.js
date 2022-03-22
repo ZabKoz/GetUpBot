@@ -24,18 +24,24 @@ function CanvasLevelingUp(message, member, conn, query2) {
                     if (err1 || err2 || err3) {
                         // View filename and error: err1
                         if (err1) {
-                            console.log(`Error #1 canvasCreate`);
-                            console.log(err1);
+                            console.log(
+                                chalk.grey('[') + chalk.redBright('ERROR') + chalk.grey('] ') +
+                                chalk.gray(`Error #1 canvasCreate `)
+                            );
                         };
                         // View filename and error: err2
                         if (err2) {
-                            console.log(`Error #2 canvasCreate`);
-                            console.log(err2);
+                            console.log(
+                                chalk.grey('[') + chalk.redBright('ERROR') + chalk.grey('] ') +
+                                chalk.gray(`Error #2 canvasCreate `)
+                            );
                         };
                         // View filename and error: err3
                         if (err3) {
-                            console.log(`Error #3 canvasCreate`);
-                            console.log(err3);
+                            console.log(
+                                chalk.grey('[') + chalk.redBright('ERROR') + chalk.grey('] ') +
+                                chalk.gray(`Error #3 canvasCreate `)
+                            );
                         };
                         // Discontinue further operations
                         return;

@@ -1,12 +1,13 @@
 // ———————————————[Packages]———————————————
 const { MessageEmbed } = require('discord.js');
 require('../../handlers/musicFunction');
+const i18n = require('../../handlers/i18n');
 const client = require('../../bot');
 
 module.exports = {
     name: "Pause",
     aliases: ["stop", "pause"],
-    description: "Zatrzymanie muzyki",
+    description: i18n.__("pause.description"),
     usage: "",
     cooldowns: 2000,
     premiumOnly: false,

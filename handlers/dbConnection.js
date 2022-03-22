@@ -1,6 +1,7 @@
 // ———————————————[Packages]———————————————
 const mysql = require('mysql');
 const chalk = require('chalk');
+const i18n = require('./i18n');
 
 /**
  * 
@@ -50,7 +51,7 @@ conn.getConnection(function (err) {
     // Information about bot connection to the database and display of which database
     console.log(
         chalk.grey('[') + chalk.greenBright('DATABSE') + chalk.grey('] ') +
-        chalk.gray(`Connected to base: `) + chalk.red.underline.bold(process.env.dbDatabase)
+        chalk.gray(i18n.__mf("dbConnection.status")) + chalk.red.underline.bold(process.env.dbDatabase)
     );
 
 });

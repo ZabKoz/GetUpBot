@@ -2,11 +2,12 @@
 const { MessageEmbed, MessageActionRow, MessageSelectMenu } = require("discord.js");
 const client = require('../../bot');
 const helpemoji = require('../../config/help.json');
+const i18n = require('../../handlers/i18n');
 
 module.exports = {
-    name: "help",
-    aliases: ["h", "pomoc"],
-    description: "Lista Komend",
+    name: "Help",
+    aliases: ["help", "h"],
+    description: i18n.__("help.description"),
     usage: "",
     cooldowns: 2000,
     premiumOnly: false,
@@ -32,10 +33,10 @@ module.exports = {
                .filter((cmd) => cmd.directory === dir)
                .map((cmd) => {
                   return {
-                     name: cmd.name ? cmd.name : `Brak nazwy komendy`,
+                     name: cmd.name ? cmd.name : i18n.__mf("help.nameMissing"),
                      description: cmd.description
                         ? cmd.description
-                        : `Brak opisu komendy`,
+                        : i18n.__mf("help.descMissing"),
                   };
                });
 
@@ -47,18 +48,23 @@ module.exports = {
 
         // Sending an embed with information about selecting a command category
         const embed = new MessageEmbed()
-            .setTitle(`${process.env.clientName || "Bot"} Komendy`)
-            .setDescription(`Proszę wybrać jedną z opcji z poniższej listy!`)
             .setColor(client.colores.embedInfo)
-            .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
-            .setTimestamp();
+            .setTitle(i18n.__mf("help.Title", { clientName: process.env.clientName}) + ` [${client.commands.size}]`)
+            .setDescription(i18n.__mf("help.Desc"))
+            .setTimestamp()
+            .setFooter(
+               {
+                  text: `${process.env.clientName} -> ${message.author.tag}`,
+                  iconURL: `${process.env.clientAvatar}`
+               }
+            );
         
         // Component responsible for displaying all categories
          const components = (state) => [
             new MessageActionRow().addComponents(
                new MessageSelectMenu()
                   .setCustomId("help-menu")
-                  .setPlaceholder(`Proszę wybrać kategorię!`)
+                  .setPlaceholder(i18n.__mf("help.Desc"))
                   .setDisabled(state)
                   .addOptions([
                      categories.map((cmd) => {
@@ -66,7 +72,7 @@ module.exports = {
                            label: `${cmd.directory}`,
                            value: `${cmd.directory.toLowerCase()}`,
                            emoji: `${helpemoji[cmd.directory.toLowerCase()]}`,
-                           description: `Komendy z kategori ${cmd.directory}!`,
+                           description: `${i18n.__mf("help.Desc2")} ${cmd.directory}!`,
                         };
                      }),
                   ])
@@ -95,14 +101,20 @@ module.exports = {
             const category = categories.find(
                (x) => x.directory.toLowerCase() === directory
             );
-
+            
             const embed2 = new MessageEmbed()
+               .setColor(client.colores.embedInfo)
                .setTitle(`${directory.charAt(0).toUpperCase()}${directory.slice(1).toLowerCase()}`)
                .setDescription(
-                  "" + category.commands.map((cmd) => `✪ | \`${cmd.name}\` (*${cmd.description}*)`).join("\n ")
+                  "" + category.commands.map((cmd) => `➥ | \`${cmd.name}\` (*${cmd.description}*)`).join("\n ")
                )
-               .setColor(client.colores.embedInfo)
-               .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` });
+               .setTimestamp()
+               .setFooter(
+                  {
+                     text: `${process.env.clientName} -> ${message.author.tag}`,
+                     iconURL: `${process.env.clientAvatar}`
+                  }
+               );
 
             interaction.update({ embeds: [embed2] });
          });

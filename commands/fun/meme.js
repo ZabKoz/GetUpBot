@@ -2,11 +2,12 @@
 const request = require('node-superfetch');
 const { MessageEmbed } = require('discord.js');
 const client = require('../../bot');
+const i18n = require('../../handlers/i18n');
 
 module.exports = {
    name: "meme",
    //aliases: ["..."],
-   description: "Memy",
+   description: i18n.__("meme.description"),
    usage: "",
    cooldowns: 2000,
    premiumOnly: false,
@@ -38,7 +39,11 @@ module.exports = {
         let Meme_embed = new MessageEmbed()
             .setColor(client.colores.embedOk)
             .setTitle(`${client.emotes.meme}| Meme || ${Responses[Response]}`)
-            .setDescription(`Tytuł: ${allowed[randomnumber].data.title}\nWysłał: ${allowed[randomnumber].data.author}`)
+            .setDescription(
+                `Tytuł: ${allowed[randomnumber].data.title}
+                Wysłał: ${allowed[randomnumber].data.author}
+                `
+            )
             .setImage(allowed[randomnumber].data.url)
             .setFooter({ text: `${process.env.clientName} -> ${message.author.tag}`, iconURL: `${process.env.clientAvatar}` })
         message.channel.send({ embeds: [Meme_embed] }).then(embedMessage => {
