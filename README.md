@@ -10,18 +10,18 @@
   <img src="assets/images/logo/logo.gif" align="right" alt="Logo" width="150" height="150">
 </a>
 
-# 🤖| GetUpBot [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ZabKoz_GetUpBot&metric=ncloc)](https://sonarcloud.io/dashboard?id=ZabKoz_GetUpBot)
+# 1. 🤖| GetUpBot [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ZabKoz_GetUpBot&metric=ncloc)](https://sonarcloud.io/dashboard?id=ZabKoz_GetUpBot)
 
 > GetUp is an open source, fully customizable Discord bot that is constantly evolving. You can also join the official GetUp support server for all your questions, suggestions and help! There are many commands and settings included that can be customized to meet the specific needs of your server.
 
 <br><br><br>
 
 <!-- ABOUT THE PROJECT -->
-## 📑| About The Project
+## 2. 📑| About The Project
 
 A multifunctional bot that has a number of different commands. The bot at the moment has:
 
-## 💬| Commands
+## 3. 💬| Commands
 |	Categories	| Commands
 |---------------|-----------------|
 | Fun	|	`meme`	|
@@ -34,14 +34,16 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## 🔗| Built With
+## 4. 🔗| Built With
 
-#### 🔰| Used in this project:
+### 4.1 🔰| Used in this project:
 
 * [Discord.js v13.6.0](https://discord.js.org/)
 * [Node v17.1.0](https://nodejs.org/en/)
 
-#### 📦| Used packages in this project:
+<br>
+
+### 4.2 📦| Used packages in this project:
 |	Package	| Version |	Package	| Version
 |---------------|-----------------|---------------|-----------------|
 | [@distube/soundcloud](https://www.npmjs.com/package/@distube/soundcloud)	|	`1.1.0`	| [glob](https://www.npmjs.com/package/glob)	                           |	`7.2.0`	|
@@ -54,47 +56,18 @@ A multifunctional bot that has a number of different commands. The bot at the mo
 | [ffmpeg-static](https://www.npmjs.com/package/ffmpeg-static)	            |	`0.7.9`	| [libsodium-wrappers](https://www.npmjs.com/package/libsodium-wrappers) |	`0.7.9`|
 | [@distube/ytdl-core](https://www.npmjs.com/package/@distube/ytdl-core)	            |	`4.11.1`	| [i18n](https://www.npmjs.com/package/i18n) |	`0.14.2`|
 | [moment](https://www.npmjs.com/package/moment)	            |	`2.29.1`	| [moment-duration-format](https://www.npmjs.com/package/moment-duration-format) |	`2.3.2`|
-| [os](https://www.npmjs.com/package/os)	            |	`0.1.2`	| [systeminformation]https://www.npmjs.com/package/systeminformation) |	`5.11.8`|
+| [os](https://www.npmjs.com/package/os)	            |	`0.1.2`	| [systeminformation](https://www.npmjs.com/package/systeminformation) |	`5.11.8`|
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Getting Started THE PROJECT -->
-## ⚙| Getting Started
-### Installation Windows
+## 5 ⚙| Getting Started
+### 5.1 📷| Installation Windows
 
-> First you need to install all the packages
-
-```bash
-  npm install
-```
-> The next step is to create an .env file
-
-```js
-clientToken = "Bot_Token"
-clientName = "Bot_Name"
-clientID = "Bot_Id"
-clientAvatar = "https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ"
-
-testingServerID = "Id_Server_Test"
-developerID = ["ID1","ID2"]
-clientPrefix = "."
-
-dbHost = "MySQL_Host"
-dbPort = 3306
-dbDatabase = "MySQL_Database"
-dbUsername = "MySQL_Username"
-dbPassword = "MySQL_Password"
-```
-
-> The last step is to turn on the bot
-
-```bash
-  npm start
-```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- TO-Do -->
-## 📝 To-Do
+## 6. 📝| To-Do
 ```
 - [x] Leveling system
 - [ ] Inventory system
@@ -103,12 +76,12 @@ dbPassword = "MySQL_Password"
 ```
 
 <!-- Suggestions -->
-## 💬| Suggestions
+## 7. 💬| Suggestions
 > If you have any suggestions, please write to me in the Issues tab.
 
 <!-- LICENSE -->
 
-## 📄| License
+## 8. 📄| License
 
 ```
 MIT License
